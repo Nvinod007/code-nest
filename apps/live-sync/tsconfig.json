@@ -16,24 +16,21 @@
         "name": "next"
       }
     ],
-    "baseUrl": "./src",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["jest", "node"],
     "outDir": "dist",
     "rootDir": "src",
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "include": [
-    "../../apps/live-sync/.next/types/**/*.ts",
-    "../../dist/apps/live-sync/.next/types/**/*.ts",
-    "next-env.d.ts",
-    "src/**/*.js",
-    "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    ".next/types/**/*.ts"
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "../../apps/live-sync/.next/types/**/*.ts",
+    "../../dist/apps/live-sync/.next/types/**/*.ts",
+    "next-env.d.ts"
   ],
   "exclude": [
     "out-tsc",
