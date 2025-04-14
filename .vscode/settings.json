@@ -16,5 +16,10 @@
     "source.removeUnusedImports": "always",
     "source.fixAll.eslint": "always",
     "source.fixAll.prettier": "always"
-  }
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma",
+    "editor.formatOnSave": true
+  },
+  "prisma.trace.server": "messages",
 }

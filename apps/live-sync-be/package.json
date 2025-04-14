@@ -1,0 +1,90 @@
+{
+  "name": "@code-nest/live-sync-be",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "generate": {
+        "executor": "nx:run-commands",
+        "options": {
+          "commands": [
+            "npx prisma generate"
+          ],
+          "cwd": "apps/live-sync-be"
+        }
+      },
+      "seed": {
+        "executor": "nx:run-commands",
+        "options": {
+          "commands": [
+            "npx ts-node ./prisma/seed.ts"
+          ],
+          "cwd": "apps/live-sync-be"
+        },
+        "dependsOn": [
+          "generate"
+        ]
+      },
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "defaultConfiguration": "production",
+        "options": {
+          "platform": "node",
+          "outputPath": "apps/live-sync-be/dist",
+          "format": [
+            "cjs"
+          ],
+          "bundle": false,
+          "main": "apps/live-sync-be/src/main.ts",
+          "tsConfig": "apps/live-sync-be/tsconfig.app.json",
+          "assets": [
+            "apps/live-sync-be/src/assets"
+          ],
+          "esbuildOptions": {
+            "sourcemap": true,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        },
+        "configurations": {
+          "development": {},
+          "production": {
+            "esbuildOptions": {
+              "sourcemap": false,
+              "outExtension": {
+                ".js": ".js"
+              }
+            }
+          }
+        }
+      },
+      "serve": {
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@code-nest/live-sync-be:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@code-nest/live-sync-be:build:development"
+          },
+          "production": {
+            "buildTarget": "@code-nest/live-sync-be:build:production"
+          }
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "prisma": "^6.6.0"
+  }
+}
