@@ -1,14 +1,11 @@
 {
-  "name": "@code-nest/types",
+  "name": "@code-nest/themes",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "nx": {
-    "name": "types"
-  },
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -16,6 +13,9 @@
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     }
+  },
+  "nx": {
+    "name": "themes"
   },
   "dependencies": {
     "tslib": "^2.3.0"

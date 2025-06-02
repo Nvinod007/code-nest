@@ -9,21 +9,15 @@
 // If you are **not** using `--turbo` you can uncomment both lines 1 & 19.
 // A discussion of the issue can be found: https://github.com/nrwl/nx/issues/26510
 
-const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
-const { join } = require('path');
-const { tailwindPlugin } = require('@code-nest/themes');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    join(
-      __dirname,
-      '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}'
-    ),
-    ...createGlobPatternsForDependencies(__dirname),
+    "./{src,pages,components,app}/**/*.{ts,tsx,js,jsx,html}",
+    "!./{src,pages,components,app}/**/*.{stories,spec}.{ts,tsx,js,jsx,html}",
+    //     ...createGlobPatternsForDependencies(__dirname)
   ],
-  plugins: [tailwindPlugin],
   theme: {
     extend: {},
   },
+  plugins: [],
 };

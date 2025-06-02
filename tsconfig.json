@@ -11,6 +11,13 @@
     },
     {
       "path": "./apps/live-sync-be"
+    },
+    {
+      "path": "./apps/portfolio"
+    },
+
+    {
+      "path": "./libs/themes"
     }
   ]
 }

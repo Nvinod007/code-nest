@@ -1,9 +1,9 @@
 {
-  "name": "@code-nest/live-sync",
+  "name": "@code-nest/portfolio",
   "version": "0.0.1",
   "private": true,
   "nx": {
-    "name": "live-sync"
+    "name": "portfolio"
   },
   "dependencies": {
     "next": "~15.1.4",
