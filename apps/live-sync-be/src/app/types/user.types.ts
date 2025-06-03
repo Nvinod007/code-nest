@@ -3,7 +3,7 @@
 import { Prisma } from "@prisma/client";
 
 // User type with all fields
-type User = Prisma.UserGetPayload<{}>;
+type User = Prisma.UserGetPayload<object>;
 
 // Custom type with selected fields
 type UserProfile = Prisma.UserGetPayload<{
