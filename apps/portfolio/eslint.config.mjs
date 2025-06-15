@@ -10,15 +10,12 @@ const compat = new FlatCompat({
   recommendedConfig: js.configs.recommended,
 });
 
-const eslintConfig = [
+export default [
   ...fixupConfigRules(compat.extends("next")),
   ...fixupConfigRules(compat.extends("next/core-web-vitals")),
   ...baseConfig,
   ...nx.configs["flat/react-typescript"],
   {
-    files: ["src/**/*"],
     ignores: [".next/**/*"],
   },
 ];
-
-export default eslintConfig;

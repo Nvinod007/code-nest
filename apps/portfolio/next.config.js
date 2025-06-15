@@ -1,20 +1,24 @@
 //@ts-check
 
+ 
 const { composePlugins, withNx } = require("@nx/next");
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
+  experimental: {
+    appNavFailHandling:true,
+  },
   nx: {
     // Set this to true if you would like to use SVGR
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
-  webpack: (config, { isServer }) => {
-    config.cache = false;
-    return config;
-  },
+  webpack: (config, { dev, isServer }) => {
+    config.cache = false
+    return config
+  }
 };
 
 const plugins = [

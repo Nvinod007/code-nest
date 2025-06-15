@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "preserve",
+    "types": ["react", "node", "three"],
     "noEmit": true,
     "emitDeclarationOnly": false,
     "esModuleInterop": true,
@@ -20,10 +21,17 @@
         "name": "next"
       }
     ],
+    "strict": true,
+    "baseUrl": "./src",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["*"],
+      "@/components/*": ["components/*"],
+      "@/features/*": ["features/*"],
+      "@/config/*": ["config/*"],
+      "@/shared/*": ["shared/*"],
+      "@/assets/*": ["assets/*"],
+      "@/types/*": ["types/*"],
+      "@/utils/*": ["utils/*"]
     },
     "outDir": "dist",
     "rootDir": "src",
