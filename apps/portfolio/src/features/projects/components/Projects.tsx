@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Github, Play } from "lucide-react";
 import { portfolioData } from "@/config/portfolio-data";
+import { ProjectImage } from "@/shared/components";
 
 export default function Projects() {
   const { projects } = portfolioData;
@@ -73,10 +74,10 @@ export default function Projects() {
                 {/* Project Image */}
                 {project.image && (
                   <div className="relative h-48 overflow-hidden sm:h-56">
-                    <img
+                    <ProjectImage
                       src={project.image}
                       alt={project.name}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/20 transition-colors duration-300 group-hover:bg-black/10" />
                   </div>

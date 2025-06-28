@@ -37,6 +37,24 @@ export default function ContactForm() {
     setFormStatus("sending");
 
     try {
+      // Option 1: EmailJS Integration (requires setup)
+      // Uncomment below when you have EmailJS configured
+      /*
+      await emailjs.send(
+        'YOUR_SERVICE_ID',
+        'YOUR_TEMPLATE_ID',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject || 'Portfolio Contact',
+          message: formData.message,
+          to_email: personal.email,
+        },
+        'YOUR_PUBLIC_KEY'
+      );
+      */
+
+      // Option 2: Fallback to mailto (current implementation)
       const subject = encodeURIComponent(
         formData.subject || "Portfolio Contact"
       );
@@ -50,6 +68,7 @@ export default function ContactForm() {
       setFormStatus("success");
       setFormData({ email: "", message: "", name: "", subject: "" });
     } catch (error) {
+      console.error("Contact form error:", error);
       setFormStatus("error");
     }
 

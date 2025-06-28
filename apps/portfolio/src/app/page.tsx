@@ -8,6 +8,8 @@ import {
   ParticleField,
   CodeMatrix,
   CursorEffect,
+  ScrollProgress,
+  PerformanceMonitor,
 } from "@/shared/components";
 
 export default function Home() {
@@ -18,6 +20,12 @@ export default function Home() {
       <ParticleField />
       <CodeMatrix />
       <CursorEffect />
+      
+      {/* Scroll Progress Indicator */}
+      <ScrollProgress />
+      
+      {/* Performance Monitor (Dev only) */}
+      <PerformanceMonitor />
 
       {/* Content with Glassmorphism */}
       <div className="relative z-10">
