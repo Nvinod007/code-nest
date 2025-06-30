@@ -11,6 +11,7 @@ import {
   ScrollProgress,
   PerformanceMonitor,
 } from "@/shared/components";
+import { SocialLinksFooter } from "@/shared/components";
 
 export default function Home() {
   return (
@@ -20,10 +21,8 @@ export default function Home() {
       <ParticleField />
       <CodeMatrix />
       <CursorEffect />
-      
       {/* Scroll Progress Indicator */}
       <ScrollProgress />
-      
       {/* Performance Monitor (Dev only) */}
       <PerformanceMonitor />
 
@@ -75,10 +74,22 @@ export default function Home() {
         {/* Footer */}
         <footer className="mt-8 px-4 py-8">
           <div className="mx-auto max-w-6xl text-center">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl">
-              <p className="text-sm text-gray-300">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-8 backdrop-blur-xl">
+              <div className="mb-6">
+                <h3 className="mb-2 text-lg font-semibold text-white">
+                  Vinod Kumar Nelanakula
+                </h3>
+                <p className="text-gray-300">
+                  Building the future, one line of code at a time
+                </p>
+              </div>
+
+              {/* Enhanced Social Links */}
+              <SocialLinksFooter />
+
+              <p className="text-sm text-gray-400">
                 © 2024 Vinod Kumar Nelanakula. Built with Next.js, TypeScript,
-                and Tailwind CSS.
+                Tailwind CSS, and Framer Motion.
               </p>
             </div>
           </div>

@@ -1,6 +1,5 @@
 //@ts-check
 
- 
 const { composePlugins, withNx } = require("@nx/next");
 
 /**
@@ -8,17 +7,18 @@ const { composePlugins, withNx } = require("@nx/next");
  **/
 const nextConfig = {
   experimental: {
-    appNavFailHandling:true,
+    appNavFailHandling: true,
   },
   nx: {
     // Set this to true if you would like to use SVGR
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  transpilePackages: ["framer-motion"],
   webpack: (config, { dev, isServer }) => {
-    config.cache = false
-    return config
-  }
+    config.cache = false;
+    return config;
+  },
 };
 
 const plugins = [

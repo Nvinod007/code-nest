@@ -14,7 +14,7 @@ export const portfolioData = {
     calendlyUrl: "",
 
     description:
-      "I&apos;m always interested in new opportunities and exciting projects. Whether you&apos;re a company looking for a developer or you&apos;re a fellow developer wanting to collaborate, I&apos;d love to hear from you!",
+      "I'm always interested in new opportunities and exciting projects. Whether you're a company looking for a developer or you're a fellow developer wanting to collaborate, I'd love to hear from you!",
 
     // Optional - for booking calls
     formAction: "",
@@ -27,7 +27,7 @@ export const portfolioData = {
     socialCTA: "Follow me on social media for updates on my latest projects",
 
     subtitle: "Ready to bring your ideas to life",
-    title: "Let&apos;s Work Together",
+    title: "Let's Work Together",
   },
   education: [
     {
@@ -141,8 +141,10 @@ export const portfolioData = {
   },
   projects: [
     {
+      category: "Web Application",
       description:
         "Real-time communication platform featuring live video calls, instant messaging, and collaborative tools.",
+      featured: true,
       features: [
         "Real-time chat messaging",
         "Video conferencing",
@@ -155,6 +157,7 @@ export const portfolioData = {
       image: "/assets/projects/live-sync.png",
       liveUrl: "https://live-sync.vercel.app",
       name: "Live Sync",
+      status: "deployed",
       technologies: [
         "Next.js",
         "WebRTC",
@@ -163,7 +166,195 @@ export const portfolioData = {
         "TypeScript",
       ],
     },
-    // Add more projects here
+    {
+      category: "Game Development",
+      description:
+        "Interactive drawing and guessing game with real-time multiplayer features. Players can draw and guess what others are drawing in an engaging social gaming experience.",
+      featured: true,
+      features: [
+        "Real-time drawing collaboration",
+        "Multiplayer guessing game",
+        "Interactive canvas drawing",
+        "Live chat integration",
+        "Score tracking system",
+      ],
+      githubUrl: "https://github.com/Nvinod007/drawnguess",
+      id: "drawnguess",
+      image: "/assets/projects/drawnguess.png",
+      liveUrl: "",
+      name: "DrawnGuess",
+      status: "wip",
+      technologies: [
+        "TypeScript",
+        "React",
+        "Socket.io",
+        "Canvas API",
+        "Node.js",
+      ],
+    },
+    {
+      category: "Web Application",
+      description:
+        "Netflix-inspired frontend application with authentication, Google Firebase integration, and ChatGPT API integration for intelligent content recommendations.",
+      featured: true,
+      features: [
+        "Netflix-style UI/UX",
+        "Firebase Authentication",
+        "AI-powered recommendations",
+        "Content browsing interface",
+        "Responsive design",
+      ],
+      githubUrl: "https://github.com/Nvinod007/NexGPT",
+      id: "nexgpt",
+      image: "/assets/projects/nexgpt.png",
+      liveUrl: "",
+      name: "NexGPT",
+      status: "wip",
+      technologies: [
+        "TypeScript",
+        "React",
+        "Firebase Auth",
+        "OpenAI API",
+        "Tailwind CSS",
+      ],
+    },
+    {
+      category: "E-commerce",
+      description:
+        "Modern food ordering platform built with React and TypeScript, featuring intuitive UI for browsing restaurants, managing cart, and placing orders.",
+      featured: false,
+      features: [
+        "Restaurant browsing",
+        "Cart management",
+        "Order placement system",
+        "Responsive design",
+        "State management with Redux",
+      ],
+      githubUrl: "https://github.com/Nvinod007/Food-ordering-web-app-react",
+      id: "food-ordering",
+      image: "/assets/projects/food-ordering.png",
+      liveUrl: "",
+      name: "Food Ordering Web App",
+      status: "wip",
+      technologies: [
+        "TypeScript",
+        "React",
+        "Redux",
+        "CSS Modules",
+        "REST APIs",
+      ],
+    },
+    {
+      category: "Data Science",
+      description:
+        "Python-based matching algorithm system for Product Information Management, optimizing product data synchronization and matching processes.",
+      featured: false,
+      features: [
+        "Product data matching",
+        "Algorithm optimization",
+        "Data synchronization",
+        "Processing automation",
+        "Performance optimization",
+      ],
+      githubUrl: "https://github.com/Nvinod007/pim-match",
+      id: "pim-match",
+      image: "/assets/projects/pim-match.png",
+      liveUrl: "",
+      name: "PIM Match",
+      status: "completed",
+      technologies: ["Python", "Data Processing", "Algorithm Design", "JSON"],
+    },
+    {
+      category: "Backend Development",
+      description:
+        "Server-side calculator application built with Node.js and Express.js, demonstrating backend development fundamentals and API design.",
+      featured: false,
+      features: [
+        "Mathematical operations API",
+        "Express.js backend",
+        "RESTful endpoints",
+        "Error handling",
+        "Server-side computation",
+      ],
+      githubUrl: "https://github.com/Nvinod007/simpleCalculatorNode",
+      id: "calculator-node",
+      image: "/assets/projects/calculator.png",
+      liveUrl: "",
+      name: "Simple Calculator API",
+      status: "completed",
+      technologies: ["JavaScript", "Node.js", "Express.js", "REST API"],
+    },
+    {
+      category: "Networking",
+      description:
+        "Cross-platform application for WiFi connection management and data sharing, enabling seamless file and text transmission between devices.",
+      featured: false,
+      features: [
+        "WiFi connection management",
+        "File transfer capabilities",
+        "Text sharing functionality",
+        "Cross-device compatibility",
+        "Network optimization",
+      ],
+      githubUrl:
+        "https://github.com/Nvinod007/Wifi-Connection-and-Data-Sharing",
+      id: "wifi-data-sharing",
+      image: "/assets/projects/wifi-sharing.png",
+      liveUrl: "",
+      name: "WiFi Data Sharing",
+      status: "completed",
+      technologies: [
+        "JavaScript",
+        "Network Programming",
+        "File Transfer",
+        "WiFi APIs",
+      ],
+    },
+    {
+      category: "Desktop Application",
+      description:
+        "Java-based music player application with modern UI and comprehensive audio management features, built for desktop environments.",
+      featured: false,
+      features: [
+        "Audio playback controls",
+        "Playlist management",
+        "File format support",
+        "Modern desktop UI",
+        "Audio visualization",
+      ],
+      githubUrl: "https://github.com/Nvinod007/musicPlayer",
+      id: "music-player",
+      image: "/assets/projects/music-player.png",
+      liveUrl: "",
+      name: "Music Player",
+      status: "completed",
+      technologies: ["Java", "Swing/JavaFX", "Audio APIs", "File Management"],
+    },
+    {
+      category: "Utility",
+      description:
+        "JavaScript application for fetching location details using pincode, demonstrating API integration and geolocation services.",
+      featured: false,
+      features: [
+        "Pincode-based location search",
+        "API integration",
+        "Geographic data retrieval",
+        "User-friendly interface",
+        "Error handling",
+      ],
+      githubUrl: "https://github.com/Nvinod007/Fecthing-Location-By-pincode",
+      id: "location-finder",
+      image: "/assets/projects/location-finder.png",
+      liveUrl: "",
+      name: "Location by Pincode",
+      status: "completed",
+      technologies: [
+        "JavaScript",
+        "REST APIs",
+        "Geolocation",
+        "DOM Manipulation",
+      ],
+    },
   ],
   skills: {
     backend: [
@@ -202,10 +393,9 @@ export const portfolioData = {
     codepen: "",
     github: "https://github.com/Nvinod007",
 
-    linkedin: "https://linkedin.com/in/vinod-kumar-nelanakula",
-    // Optional
+    linkedin: "https://www.linkedin.com/in/nvinod007/",
     portfolio: "https://your-portfolio.com",
-    twitter: "", // Optional
+    twitter: "",
   },
 };
 
