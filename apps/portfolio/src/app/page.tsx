@@ -16,12 +16,10 @@ import { SocialLinksFooter } from "@/shared/components";
 export default function Home() {
   return (
     <div className="relative min-h-screen text-white">
-      {/* Beautiful Background Effects */}
       <AnimatedBackground />
       <ParticleField />
       <CodeMatrix />
       <CursorEffect />
-      {/* Scroll Progress Indicator */}
       <ScrollProgress />
       {/* Performance Monitor (Dev only) */}
       <PerformanceMonitor />
