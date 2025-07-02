@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Github, Play, Filter } from "lucide-react";
-import { portfolioData } from "@/config/portfolio-data";
+import { portfolioData, type PortfolioData } from "@/config/portfolio-data";
 import { ProjectImage } from "@/shared/components";
 
 export default function Projects() {
@@ -173,7 +173,7 @@ function ProjectCard({
   index,
   size,
 }: {
-  project: any;
+  project: PortfolioData['projects'][0];
   index: number;
   size: "large" | "medium" | "small";
 }) {

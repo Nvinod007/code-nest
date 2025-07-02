@@ -29,6 +29,8 @@ export default function Scene3D() {
   useEffect(() => {
     if (!mountRef.current || !isMounted) return;
 
+    const currentMount = mountRef.current;
+
     // Scene setup
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x1a1a2e);
@@ -48,7 +50,7 @@ export default function Scene3D() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMap.enabled = true;
     rendererRef.current = renderer;
-    mountRef.current.appendChild(renderer.domElement);
+    currentMount.appendChild(renderer.domElement);
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
@@ -216,8 +218,8 @@ export default function Scene3D() {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (currentMount && renderer.domElement) {
+        currentMount.removeChild(renderer.domElement);
       }
       renderer.dispose();
     };
