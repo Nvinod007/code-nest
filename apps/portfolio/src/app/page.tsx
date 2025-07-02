@@ -12,8 +12,11 @@ import {
   PerformanceMonitor,
 } from "@/shared/components";
 import { SocialLinksFooter } from "@/shared/components";
+import { portfolioData } from "@/config/portfolio-data";
 
 export default function Home() {
+  const { personal } = portfolioData;
+  
   return (
     <div className="relative min-h-screen text-white">
       <AnimatedBackground />
@@ -75,10 +78,10 @@ export default function Home() {
             <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-8 backdrop-blur-xl">
               <div className="mb-6">
                 <h3 className="mb-2 text-lg font-semibold text-white">
-                  Vinod Kumar Nelanakula
+                  {personal.name}
                 </h3>
                 <p className="text-gray-300">
-                  Building the future, one line of code at a time
+                  {personal.tagline[0]}
                 </p>
               </div>
 
@@ -86,7 +89,7 @@ export default function Home() {
               <SocialLinksFooter />
 
               <p className="text-sm text-gray-400">
-                © 2024 Vinod Kumar Nelanakula. Built with Next.js, TypeScript,
+                © 2024 {personal.name}. Built with Next.js, TypeScript,
                 Tailwind CSS, and Framer Motion.
               </p>
             </div>

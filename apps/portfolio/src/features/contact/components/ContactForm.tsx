@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import { portfolioData } from "@/config/portfolio-data";
+import emailjs from "@emailjs/browser";
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -11,7 +12,7 @@ const itemVariants = {
 };
 
 export default function ContactForm() {
-  const { personal } = portfolioData;
+  const { personal, contact } = portfolioData;
 
   const [formData, setFormData] = useState({
     email: "",
@@ -37,35 +38,36 @@ export default function ContactForm() {
     setFormStatus("sending");
 
     try {
-      // Option 1: EmailJS Integration (requires setup)
-      // Uncomment below when you have EmailJS configured
-      /*
-      await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject || 'Portfolio Contact',
-          message: formData.message,
-          to_email: personal.email,
-        },
-        'YOUR_PUBLIC_KEY'
-      );
-      */
+      // Try EmailJS first
+      const { serviceId, templateId, publicKey } = contact.emailjs;
 
-      // Option 2: Fallback to mailto (current implementation)
-      const subject = encodeURIComponent(
-        formData.subject || "Portfolio Contact"
-      );
-      const body = encodeURIComponent(
-        `Hi Vinod,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      );
-      const mailtoLink = `mailto:${personal.email}?subject=${subject}&body=${body}`;
-
-      window.open(mailtoLink, "_blank");
-
-      setFormStatus("success");
+      if (serviceId && templateId && publicKey) {
+        await emailjs.send(
+          serviceId,
+          templateId,
+          {
+            from_email: formData.email,
+            from_name: formData.name,
+            message: formData.message,
+            subject: formData.subject || 'Portfolio Contact',
+            to_email: personal.email,
+          },
+          publicKey
+        );
+        setFormStatus("success");
+      } else {
+        // Fallback to mailto
+        const subject = encodeURIComponent(
+          formData.subject || "Portfolio Contact"
+        );
+        const body = encodeURIComponent(
+          `Hi ${personal.name.split(' ')[0]},\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        );
+        const mailtoLink = `mailto:${personal.email}?subject=${subject}&body=${body}`;
+        window.open(mailtoLink, "_blank");
+        setFormStatus("success");
+      }
+      
       setFormData({ email: "", message: "", name: "", subject: "" });
     } catch (error) {
       console.error("Contact form error:", error);
@@ -184,8 +186,8 @@ export default function ContactForm() {
           {formStatus === "idle" && <Send className="h-5 w-5" />}
 
           {formStatus === "idle" && "Send Message"}
-          {formStatus === "sending" && "Opening Email Client..."}
-          {formStatus === "success" && "Email Client Opened!"}
+          {formStatus === "sending" && "Sending Message..."}
+          {formStatus === "success" && "Message Sent!"}
           {formStatus === "error" && "Please Try Again"}
         </motion.button>
 
@@ -195,7 +197,7 @@ export default function ContactForm() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center text-sm text-green-400"
           >
-            Your email client should now be open with the message pre-filled!
+            Your message has been sent successfully!
           </motion.p>
         )}
       </form>

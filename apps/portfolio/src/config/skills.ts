@@ -1,0 +1,33 @@
+export const skillsConfig = {
+  backend: [
+    "Node.js",
+    "Express.js",
+    "Python",
+    "MongoDB",
+    "Redis",
+    "SQL",
+    "REST APIs",
+  ],
+  cloud: ["Firebase", "Vercel", "Netlify", "AWS S3"],
+  frontend: [
+    "React.js",
+    "React Native",
+    "TypeScript",
+    "JavaScript",
+    "Redux Toolkit",
+    "Tailwind CSS",
+    "Material UI",
+    "Next.js",
+  ],
+  mobile: ["React Native", "Expo", "Android Studio", "Xcode"],
+  tools: [
+    "Firebase Auth",
+    "RTK Query",
+    "Jest",
+    "React Testing Library",
+    "Git",
+    "Webpack",
+    "Vite",
+    "Docker",
+  ],
+};

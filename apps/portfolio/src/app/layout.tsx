@@ -1,9 +1,9 @@
 import "./global.css";
+import { portfolioData } from "@/config/portfolio-data";
 
 export const metadata = {
-  description:
-    "Portfolio showcasing 2+ years of React/React Native development experience and modern web development skills",
-  title: "Vinod Kumar Nelanakula - Frontend Developer",
+  description: portfolioData.personal.summary,
+  title: `${portfolioData.personal.name} - ${portfolioData.personal.title}`,
 };
 
 export default function RootLayout({
