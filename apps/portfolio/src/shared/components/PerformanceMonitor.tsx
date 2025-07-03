@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 interface PerformanceStats {
   fps: number;
@@ -25,13 +25,45 @@ export default function PerformanceMonitor() {
     renderTime: 0,
   });
   const [isVisible, setIsVisible] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
 
-  // Only show in development
+  const toggleMonitor = useCallback(() => {
+    const newState = !isEnabled;
+    setIsEnabled(newState);
+    setIsVisible(newState);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("performance-monitor-enabled", newState.toString());
+    }
+  }, [isEnabled]);
+
+  // Initialize visibility based on environment and localStorage
   useEffect(() => {
     const isDev = process.env.NODE_ENV === "development";
-    setIsVisible(isDev);
+    const savedPreference = typeof window !== "undefined" 
+      ? localStorage.getItem("performance-monitor-enabled")
+      : null;
+    
+    // Show by default in dev, or if manually enabled in production
+    const shouldShow = isDev || savedPreference === "true";
+    setIsEnabled(shouldShow);
+    setIsVisible(shouldShow);
+  }, []);
 
-    if (!isDev) return;
+  // Toggle functionality with Ctrl+Shift+P
+  useEffect(() => {
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.shiftKey && e.key === "P") {
+        e.preventDefault();
+        toggleMonitor();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeydown);
+    return () => window.removeEventListener("keydown", handleKeydown);
+  }, [toggleMonitor]);
+
+  useEffect(() => {
+    if (!isEnabled) return;
 
     let frameCount = 0;
     let lastTime = performance.now();
@@ -71,13 +103,39 @@ export default function PerformanceMonitor() {
         cancelAnimationFrame(animationFrame);
       }
     };
-  }, []);
+  }, [isEnabled]);
 
-  if (!isVisible) return null;
+  // Show toggle button when monitor is hidden (only in dev or if user has used it before)
+  if (!isVisible) {
+    const isDev = process.env.NODE_ENV === "development";
+    const hasBeenUsed = typeof window !== "undefined" && 
+      localStorage.getItem("performance-monitor-enabled") !== null;
+    
+    if (isDev || hasBeenUsed) {
+      return (
+        <button
+          onClick={toggleMonitor}
+          className="fixed bottom-4 right-4 z-50 rounded-full border border-gray-600 bg-black/80 p-2 text-xs text-gray-400 backdrop-blur-sm transition-all hover:bg-gray-800 hover:text-white"
+          title="Show Performance Monitor (Ctrl+Shift+P)"
+        >
+          ⚡
+        </button>
+      );
+    }
+    
+    return null;
+  }
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 rounded-lg border border-gray-600 bg-black/80 p-3 font-mono text-xs text-white backdrop-blur-sm">
-      <div className="mb-1 text-green-400">⚡ Performance Monitor</div>
+    <div 
+      className="fixed bottom-4 right-4 z-50 cursor-pointer rounded-lg border border-gray-600 bg-black/80 p-3 font-mono text-xs text-white backdrop-blur-sm transition-opacity hover:opacity-80"
+      onClick={toggleMonitor}
+      title="Click to hide or press Ctrl+Shift+P to toggle"
+    >
+      <div className="mb-1 flex items-center justify-between">
+        <span className="text-green-400">⚡ Performance Monitor</span>
+        <span className="text-gray-500">✕</span>
+      </div>
       <div>
         FPS:{" "}
         <span
@@ -102,7 +160,7 @@ export default function PerformanceMonitor() {
           </span>
         </div>
       )}
-      <div className="mt-1 text-xs text-gray-500">Dev Mode Only</div>
+      <div className="mt-1 text-xs text-gray-500">Ctrl+Shift+P to toggle</div>
     </div>
   );
 }

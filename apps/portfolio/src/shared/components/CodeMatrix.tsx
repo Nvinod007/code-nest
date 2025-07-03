@@ -18,7 +18,7 @@ export default function CodeMatrix() {
   if (!isMounted || prefersReducedMotion) return null;
 
   return (
-    <div className="-z-15 pointer-events-none fixed right-0 top-0 h-full w-60 overflow-hidden opacity-[0.03]">
+    <div className="-z-20 pointer-events-none fixed right-0 top-0 h-full w-60 overflow-hidden opacity-[0.03]">
       <div className="space-y-4 p-8 font-mono text-xs text-blue-300">
         <motion.div
           animate={{ opacity: [0.5, 1, 0.5] }}
