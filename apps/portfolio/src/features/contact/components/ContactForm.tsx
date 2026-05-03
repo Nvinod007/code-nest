@@ -23,6 +23,7 @@ export default function ContactForm() {
   const [formStatus, setFormStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
+  const [successHint, setSuccessHint] = useState("");
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -33,45 +34,71 @@ export default function ContactForm() {
     }));
   };
 
+  const openMailto = () => {
+    const subject = encodeURIComponent(
+      formData.subject || "Portfolio Contact"
+    );
+    const body = encodeURIComponent(
+      `Hi ${personal.name.split(" ")[0]},\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("sending");
 
-    try {
-      // Try EmailJS first
-      const { serviceId, templateId, publicKey } = contact.emailjs;
+    const { serviceId, templateId, publicKey } = contact.emailjs;
+    const hasEmailJs =
+      serviceId &&
+      templateId &&
+      publicKey &&
+      !serviceId.includes("your_") &&
+      !templateId.includes("your_") &&
+      !publicKey.includes("your_");
 
-      if (serviceId && templateId && publicKey) {
+    try {
+      if (hasEmailJs) {
+        const subjectLine = formData.subject || "Portfolio Contact";
         await emailjs.send(
           serviceId,
           templateId,
           {
+            email: formData.email,
             from_email: formData.email,
             from_name: formData.name,
             message: formData.message,
-            subject: formData.subject || 'Portfolio Contact',
+            name: formData.name,
+            reply_to: formData.email,
+            subject: subjectLine,
             to_email: personal.email,
+            user_email: formData.email,
+            user_name: formData.name,
           },
           publicKey
         );
+        setSuccessHint(
+          "Check your inbox (and spam). In EmailJS, the template “To Email” must be set to your address."
+        );
         setFormStatus("success");
+        setFormData({ email: "", message: "", name: "", subject: "" });
       } else {
-        // Fallback to mailto
-        const subject = encodeURIComponent(
-          formData.subject || "Portfolio Contact"
+        openMailto();
+        setSuccessHint(
+          "Your email app should open with a draft — press Send there to deliver the message to me."
         );
-        const body = encodeURIComponent(
-          `Hi ${personal.name.split(' ')[0]},\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-        );
-        const mailtoLink = `mailto:${personal.email}?subject=${subject}&body=${body}`;
-        window.open(mailtoLink, "_blank");
         setFormStatus("success");
+        setFormData({ email: "", message: "", name: "", subject: "" });
       }
-      
-      setFormData({ email: "", message: "", name: "", subject: "" });
     } catch (error) {
-      console.error("Contact form error:", error);
-      setFormStatus("error");
+      // EmailJS failed (e.g. Failed to fetch, CORS, wrong config) → fallback to mailto
+      console.warn("EmailJS failed, falling back to mailto:", error);
+      openMailto();
+      setSuccessHint(
+        "Your email app should open with a draft — press Send there to deliver the message to me."
+      );
+      setFormStatus("success");
+      setFormData({ email: "", message: "", name: "", subject: "" });
     }
 
     setTimeout(() => setFormStatus("idle"), 3000);
@@ -80,7 +107,7 @@ export default function ContactForm() {
   return (
     <motion.div
       variants={itemVariants}
-      className="rounded-2xl border border-gray-700 bg-gray-900/50 p-6 backdrop-blur-sm sm:p-8"
+      className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8"
     >
       <h3 className="mb-6 text-xl font-bold text-white sm:text-2xl">
         Send a Message
@@ -197,7 +224,7 @@ export default function ContactForm() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center text-sm text-green-400"
           >
-            Your message has been sent successfully!
+            {successHint || "Your message has been sent successfully!"}
           </motion.p>
         )}
       </form>

@@ -12,7 +12,7 @@ export default function Experience() {
         {experience.map(job => (
           <div
             key={job.id}
-            className="mb-8 rounded-lg border border-gray-600/30 bg-gradient-to-r from-gray-800/50 to-gray-700/50 p-8"
+            className="mb-8 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm"
           >
             <div className="mb-4 flex flex-col md:flex-row md:items-start md:justify-between">
               <div>
@@ -34,7 +34,7 @@ export default function Experience() {
                 Key Projects:
               </h4>
               {job.projects.map((project, index) => (
-                <div key={index} className="rounded-lg bg-gray-900/30 p-6">
+                <div key={index} className="rounded-2xl bg-white/5 border border-white/10 p-6">
                   <h5 className="mb-2 text-lg font-semibold text-yellow-400">
                     {project.name}
                   </h5>

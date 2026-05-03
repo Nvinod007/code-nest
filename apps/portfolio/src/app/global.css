@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font loaded via link for compatibility where next/font build-time fetch fails */
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
 * {
@@ -15,7 +16,7 @@ html {
 }
 
 body {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   background: #0a0a0f;
   color: #ffffff;
 }

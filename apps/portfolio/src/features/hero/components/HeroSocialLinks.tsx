@@ -120,7 +120,7 @@ export default function HeroSocialLinks() {
             className={`
               relative flex h-14 w-14 items-center justify-center rounded-full 
               border border-gray-600/50 bg-gray-900/80 text-gray-400 
-              backdrop-blur-sm transition-all duration-500
+              transition-all duration-500
               ${borderColor} ${textColor} ${glowColor}
               sm:h-16 sm:w-16
             `}
@@ -198,7 +198,7 @@ export default function HeroSocialLinks() {
             >
               <div className={`
                 relative rounded-lg border border-gray-600/50 bg-gray-900/90 
-                px-3 py-2 text-xs font-medium text-white backdrop-blur-sm
+                px-3 py-2 text-xs font-medium text-white
                 shadow-lg ${glowColor.replace('group-hover:', '')}
               `}>
                 <div className={`absolute inset-0 rounded-lg bg-gradient-to-r opacity-20 ${accentColor}`} />

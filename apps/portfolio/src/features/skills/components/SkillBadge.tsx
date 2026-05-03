@@ -17,7 +17,7 @@ export default function SkillBadge({ skill, delay, inView }: SkillBadgeProps) {
         delay,
         duration: 0.4,
       }}
-      className="cursor-default rounded-lg border border-gray-600 bg-gray-800 px-2 py-1 text-xs font-medium text-gray-300 transition-colors hover:border-gray-500 hover:bg-gray-700 sm:px-3 sm:py-2 sm:text-sm"
+      className="cursor-default rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-gray-200 transition-colors hover:border-white/30 hover:bg-white/15 sm:px-4 sm:py-2 sm:text-sm"
     >
       {skill}
     </motion.span>
