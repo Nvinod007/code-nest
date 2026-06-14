@@ -1,3 +1,8 @@
+import { personalConfig } from "./personal";
+import { socialConfig } from "./social";
+import { contactConfig } from "./contact";
+import { skillsConfig } from "./skills";
+
 export const portfolioData = {
   certifications: [
     {
@@ -8,27 +13,7 @@ export const portfolioData = {
     },
     // Add more certifications
   ],
-  contact: {
-    availability: "Available for freelance work",
-    // email, phone, or form
-    calendlyUrl: "",
-
-    description:
-      "I'm always interested in new opportunities and exciting projects. Whether you're a company looking for a developer or you're a fellow developer wanting to collaborate, I'd love to hear from you!",
-
-    // Optional - for booking calls
-    formAction: "",
-
-    preferredContact: "email",
-
-    responseTime: "I typically respond within 24 hours",
-
-    // For form submission endpoint
-    socialCTA: "Follow me on social media for updates on my latest projects",
-
-    subtitle: "Ready to bring your ideas to life",
-    title: "Let's Work Together",
-  },
+  contact: contactConfig,
   education: [
     {
       degree: "B.Tech - CSE",
@@ -116,29 +101,7 @@ export const portfolioData = {
       startDate: "Mar 2023",
     },
   ],
-  personal: {
-    avatar: "/assets/avatar.jpg",
-    email: "vinodkumar.nelanakula@gmail.com",
-    location: "Hyderabad, TG",
-    name: "Vinod Kumar Nelanakula",
-    phone: "7981181409",
-    // Add your photo path
-    resume: "/assets/VinodKumar_Fullstack.pdf",
-
-    subtitle: "React & React Native Expert",
-
-    summary:
-      "Associate Software Engineer with 2+ years of experience building scalable web and mobile apps using React, TypeScript, Node.js, and MongoDB.",
-    // Add your resume path
-    tagline: [
-      "I build amazing React applications",
-      "I create smooth user experiences",
-      "I work with React Native",
-      "I develop with TypeScript",
-      "I build scalable web solutions",
-    ],
-    title: "Frontend Developer",
-  },
+  personal: personalConfig,
   projects: [
     {
       category: "Web Application",
@@ -356,47 +319,8 @@ export const portfolioData = {
       ],
     },
   ],
-  skills: {
-    backend: [
-      "Node.js",
-      "Express.js",
-      "Python",
-      "MongoDB",
-      "Redis",
-      "SQL",
-      "REST APIs",
-    ],
-    cloud: ["Firebase", "Vercel", "Netlify", "AWS S3"],
-    frontend: [
-      "React.js",
-      "React Native",
-      "TypeScript",
-      "JavaScript",
-      "Redux Toolkit",
-      "Tailwind CSS",
-      "Material UI",
-      "Next.js",
-    ],
-    mobile: ["React Native", "Expo", "Android Studio", "Xcode"],
-    tools: [
-      "Firebase Auth",
-      "RTK Query",
-      "Jest",
-      "React Testing Library",
-      "Git",
-      "Webpack",
-      "Vite",
-      "Docker",
-    ],
-  },
-  social: {
-    codepen: "",
-    github: "https://github.com/Nvinod007",
-
-    linkedin: "https://www.linkedin.com/in/nvinod007/",
-    portfolio: "https://your-portfolio.com",
-    twitter: "",
-  },
+  skills: skillsConfig,
+  social: socialConfig,
 };
 
 export type PortfolioData = typeof portfolioData;

@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { portfolioData } from "@/config/portfolio-data";
 
 export default function CodeMatrix() {
+  const { personal } = portfolioData;
   const [isMounted, setIsMounted] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
@@ -22,7 +24,7 @@ export default function CodeMatrix() {
           animate={{ opacity: [0.5, 1, 0.5] }}
           transition={{ duration: 4, repeat: Infinity }}
         >
-          const developer = &quot;Vinod&quot;
+          const developer = &quot;{personal.name.split(' ')[0]}&quot;
         </motion.div>
         <motion.div
           animate={{ opacity: [0.3, 0.8, 0.3] }}
