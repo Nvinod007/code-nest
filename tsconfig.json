@@ -4,9 +4,6 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/live-sync-e2e"
-    },
-    {
       "path": "./apps/live-sync"
     },
     {
