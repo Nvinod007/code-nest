@@ -18,7 +18,8 @@
     "target": "es2022",
     "baseUrl": ".",
     "paths": {
-      "@code-nest/themes": ["libs/themes/src/index.ts"]
+      "@code-nest/themes": ["libs/themes/src/index.ts"],
+      "@code-nest/ui": ["libs/ui/src/index.ts"]
     }
   }
 }

@@ -1,0 +1,40 @@
+{
+  "name": "@code-nest/ui",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "main": "./dist/index.esm.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.esm.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.esm.d.ts",
+      "import": "./dist/index.esm.js",
+      "default": "./dist/index.esm.js"
+    }
+  },
+  "dependencies": {
+    "@code-nest/themes": "workspace:*",
+    "@heroui/react": "^2.7.9",
+    "@heroui/theme": "^2.4.16",
+    "@radix-ui/react-slot": "^1.2.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.15.0",
+    "lucide-react": "^0.515.0",
+    "next-themes": "^0.4.6",
+    "tailwind-merge": "^3.3.1"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "nx": {
+    "name": "ui",
+    "tags": [
+      "npm:public",
+      "scope:ui"
+    ]
+  }
+}

@@ -17,6 +17,12 @@
     },
     {
       "path": "./libs/themes"
+    },
+    {
+      "path": "./apps/ui-showcase"
+    },
+    {
+      "path": "./libs/ui"
     }
   ]
 }
