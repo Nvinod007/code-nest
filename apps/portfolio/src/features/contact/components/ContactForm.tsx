@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, Mail } from "lucide-react";
 import { portfolioData } from "@/config/portfolio-data";
 import emailjs from "@emailjs/browser";
 
@@ -21,7 +21,7 @@ export default function ContactForm() {
     subject: "",
   });
   const [formStatus, setFormStatus] = useState<
-    "idle" | "sending" | "success" | "error"
+    "idle" | "sending" | "success" | "error" | "mailapp-pending"
   >("idle");
   const [successHint, setSuccessHint] = useState("");
 
@@ -47,6 +47,7 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("sending");
+    let resetToIdleAfterMs = 3000;
 
     const { serviceId, templateId, publicKey } = contact.emailjs;
     const hasEmailJs =
@@ -85,23 +86,25 @@ export default function ContactForm() {
       } else {
         openMailto();
         setSuccessHint(
-          "Your email app should open with a draft — press Send there to deliver the message to me."
+          "No email service configured — your mail app should open with a draft. Press Send there to deliver."
         );
-        setFormStatus("success");
+        setFormStatus("mailapp-pending");
         setFormData({ email: "", message: "", name: "", subject: "" });
+        resetToIdleAfterMs = 6000;
       }
     } catch (error) {
-      // EmailJS failed (e.g. Failed to fetch, CORS, wrong config) → fallback to mailto
+      // EmailJS failed → mailto fallback; not delivered until user sends from mail app
       console.warn("EmailJS failed, falling back to mailto:", error);
       openMailto();
       setSuccessHint(
-        "Your email app should open with a draft — press Send there to deliver the message to me."
+        "Could not send through the site. Your mail app should open — press Send there to deliver your message."
       );
-      setFormStatus("success");
+      setFormStatus("mailapp-pending");
       setFormData({ email: "", message: "", name: "", subject: "" });
+      resetToIdleAfterMs = 6000;
     }
 
-    setTimeout(() => setFormStatus("idle"), 3000);
+    setTimeout(() => setFormStatus("idle"), resetToIdleAfterMs);
   };
 
   return (
@@ -196,35 +199,48 @@ export default function ContactForm() {
           className={`flex w-full items-center justify-center gap-2 rounded-lg px-6 py-4 font-semibold transition-all duration-300 ${
             formStatus === "success"
               ? "bg-green-600 text-white"
-              : formStatus === "error"
-                ? "bg-red-600 text-white"
-                : formStatus === "sending"
-                  ? "cursor-not-allowed bg-gray-600 text-gray-300"
-                  : "bg-blue-600 text-white hover:bg-blue-700"
+              : formStatus === "mailapp-pending"
+                ? "bg-amber-600 text-white"
+                : formStatus === "error"
+                  ? "bg-red-600 text-white"
+                  : formStatus === "sending"
+                    ? "cursor-not-allowed bg-gray-600 text-gray-300"
+                    : "bg-blue-600 text-white hover:bg-blue-700"
           }`}
-          whileHover={formStatus === "idle" ? { scale: 1.02 } : {}}
+          whileHover={
+            formStatus === "idle" ? { scale: 1.02 } : {}
+          }
           whileTap={formStatus === "idle" ? { scale: 0.98 } : {}}
         >
           {formStatus === "sending" && (
             <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-transparent" />
           )}
           {formStatus === "success" && <CheckCircle className="h-5 w-5" />}
+          {formStatus === "mailapp-pending" && <Mail className="h-5 w-5" />}
           {formStatus === "error" && <AlertCircle className="h-5 w-5" />}
           {formStatus === "idle" && <Send className="h-5 w-5" />}
 
           {formStatus === "idle" && "Send Message"}
           {formStatus === "sending" && "Sending Message..."}
           {formStatus === "success" && "Message Sent!"}
+          {formStatus === "mailapp-pending" && "Finish sending from mail"}
           {formStatus === "error" && "Please Try Again"}
         </motion.button>
 
-        {formStatus === "success" && (
+        {(formStatus === "success" || formStatus === "mailapp-pending") && (
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center text-sm text-green-400"
+            className={
+              formStatus === "success"
+                ? "text-center text-sm text-green-400"
+                : "text-center text-sm text-amber-200"
+            }
           >
-            {successHint || "Your message has been sent successfully!"}
+            {successHint ||
+              (formStatus === "success"
+                ? "Your message has been sent successfully!"
+                : "")}
           </motion.p>
         )}
       </form>
