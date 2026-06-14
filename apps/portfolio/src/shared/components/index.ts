@@ -6,3 +6,4 @@ export { default as WaveEffect } from "./WaveEffect";
 export { default as ScrollProgress } from "./ScrollProgress";
 export { default as PerformanceMonitor } from "./PerformanceMonitor";
 export { default as ProjectImage } from "./ProjectImage";
+export { default as SocialLinksFooter } from "./SocialLinksFooter";

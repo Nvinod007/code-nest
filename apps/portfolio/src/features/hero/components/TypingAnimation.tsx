@@ -1,8 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
+import dynamic from "next/dynamic";
 import { portfolioData } from "@/config/portfolio-data";
+
+const TypeAnimation = dynamic(
+  () => import("react-type-animation").then(mod => mod.TypeAnimation),
+  { ssr: false }
+);
 
 export default function TypingAnimation() {
   const { personal } = portfolioData;
@@ -14,13 +19,16 @@ export default function TypingAnimation() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.6 }}
     >
-      <TypeAnimation
-        sequence={personal.tagline.flatMap(text => [text, 2000])}
-        wrapper="span"
-        speed={50}
-        style={{ display: "inline-block", fontSize: "1em" }}
-        repeat={Infinity}
-      />
+      {/* Ensure TypeAnimation is only rendered if it's available (i.e., on the client) */}
+      {TypeAnimation && (
+        <TypeAnimation
+          sequence={personal.tagline.flatMap(text => [text, 2000])}
+          wrapper="span"
+          speed={50}
+          style={{ display: "inline-block", fontSize: "1em" }}
+          repeat={Infinity}
+        />
+      )}
     </motion.div>
   );
 }
