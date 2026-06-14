@@ -9,5 +9,5 @@
     "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo"
   },
   "include": ["src/**/*.ts", "src/prisma/seed.ts"],
-  "exclude": ["eslint.config.js", "eslint.config.cjs", "eslint.config.mjs", "../../libs/**/*", "../../libs/themes/src/index.ts"]
+  "exclude": ["eslint.config.js", "eslint.config.cjs", "eslint.config.mjs", "../../libs/**/*", "../../libs/themes/src/index.ts", "src/generated"]
 }

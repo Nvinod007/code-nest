@@ -1,6 +1,4 @@
-// import { Prisma } from "../generated/prisma";
-
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../../generated/prisma";
 
 // User type with all fields
 type User = Prisma.UserGetPayload<object>;
