@@ -8,6 +8,9 @@
     },
     {
       "path": "./apps/live-sync"
+    },
+    {
+      "path": "./libs/types"
     }
   ]
 }

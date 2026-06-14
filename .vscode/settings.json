@@ -1,0 +1,20 @@
+{
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    ".*ClassName"
+  ],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.showUnused": true,
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.removeUnusedImports": "always",
+    "source.fixAll.eslint": "always",
+    "source.fixAll.prettier": "always"
+  }
+}

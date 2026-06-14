@@ -9,4 +9,7 @@ export default [
     // Override or add rules here
     rules: {},
   },
+  {
+    ignores: ['.next/**/*', 'node_modules/**/*'],
+  },
 ];
