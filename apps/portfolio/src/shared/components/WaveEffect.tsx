@@ -13,7 +13,7 @@ export default function WaveEffect() {
   if (!isMounted) return null;
 
   return (
-    <div className="-z-5 pointer-events-none fixed inset-0 overflow-hidden">
+    <div className="-z-10 pointer-events-none fixed inset-0 overflow-hidden">
       {/* Animated Waves */}
       <motion.div
         className="absolute bottom-0 left-0 h-64 w-full"
