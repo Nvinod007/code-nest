@@ -1,10 +1,13 @@
 // @ts-check
 
 const { join } = require("path");
-const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");
 const { heroui } = require("@heroui/theme");
 
 /**
+ * Do not use Nx `createGlobPatternsForDependencies` here: it calls `readCachedProjectGraph()`,
+ * which is unavailable when PostCSS loads this file during `next build` (no Nx graph in
+ * that process). Explicit `content` globs below cover the app and `libs/ui`.
+ *
  * Build-time HeroUI primary ramp (default). Runtime preset switching updates
  * `@code-nest/ui` shadcn CSS variables; `HeroPrimaryButton` also syncs hex from `@code-nest/themes`.
  * Keep in sync with `getHeroUiThemeOverride("slate")` in libs/themes.
@@ -36,7 +39,6 @@ module.exports = {
       "{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,js,jsx,html,mdx}"
     ),
     join(__dirname, "../../libs/ui/src/**/*!(*.stories|*.spec).{ts,tsx,js,jsx,html}"),
-    ...createGlobPatternsForDependencies(__dirname),
   ],
   darkMode: "class",
   plugins: [
