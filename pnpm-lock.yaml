@@ -231,6 +231,9 @@ importers:
 
   libs/themes:
     dependencies:
+      tailwindcss:
+        specifier: 3.4.3
+        version: 3.4.3(ts-node@10.9.1(@swc/core@1.5.29(@swc/helpers@0.5.17))(@types/node@18.16.9)(typescript@5.7.3))
       tslib:
         specifier: ^2.3.0
         version: 2.8.1
