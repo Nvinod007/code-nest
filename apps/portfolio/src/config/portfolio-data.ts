@@ -3,6 +3,21 @@ import { socialConfig } from "./social";
 import { contactConfig } from "./contact";
 import { skillsConfig } from "./skills";
 
+/** Public path under `public/`, e.g. `/assets/projects/shot.png`. Omit for icon placeholder. */
+export type PortfolioProject = {
+  category: string;
+  description: string;
+  featured: boolean;
+  features: string[];
+  githubUrl: string;
+  id: string;
+  image?: string;
+  liveUrl: string;
+  name: string;
+  status: "completed" | "deployed" | "wip";
+  technologies: string[];
+};
+
 export const portfolioData = {
   certifications: [
     {
@@ -345,7 +360,7 @@ export const portfolioData = {
       status: "completed",
       technologies: ["HTML", "React", "JavaScript"],
     },
-  ],
+  ] as PortfolioProject[],
   skills: skillsConfig,
   social: socialConfig,
 };
