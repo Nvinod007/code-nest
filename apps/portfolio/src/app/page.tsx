@@ -4,44 +4,40 @@ import { Experience } from "@/features/experience/components";
 import { Projects } from "@/features/projects/components";
 import { Contact } from "@/features/contact/components";
 import {
-  AnimatedBackground,
-  ParticleField,
-  CodeMatrix,
-  CursorEffect,
-  ScrollProgress,
+  PortfolioEffects,
+  CursorBodyClass,
   PerformanceMonitor,
+  SocialLinksFooter,
 } from "@/shared/components";
-import { SocialLinksFooter } from "@/shared/components";
 import { portfolioData } from "@/config/portfolio-data";
 
 export default function Home() {
   const { personal } = portfolioData;
-  
+
   return (
     <div className="relative min-h-screen text-white">
-      <AnimatedBackground />
-      <ParticleField />
-      <CodeMatrix />
-      <CursorEffect />
-      <ScrollProgress />
-      {/* Performance Monitor (Dev only) */}
+      {/* Persistent gradient so content is visible even when effects are off */}
+      <div
+        className="fixed inset-0 -z-30 bg-gradient-to-b from-slate-950 via-blue-950/80 to-slate-950"
+        aria-hidden
+      />
+      <CursorBodyClass />
+      <PortfolioEffects />
       <PerformanceMonitor />
 
-      {/* Content with Glassmorphism */}
-      <div className="relative z-10">
-        {/* Hero Section */}
+      <div className="relative z-10 min-h-screen">
         <ModernHero />
 
-        {/* Skills Section */}
+        {/* Skills — transparent glass */}
         <div className="py-4">
-          <div className="mx-4 rounded-3xl border border-white/10 bg-white/[0.08] shadow-2xl shadow-purple-500/10 backdrop-blur-xl sm:mx-8">
+          <div className="mx-4 rounded-3xl border border-white/10 bg-white/[0.06] shadow-xl shadow-purple-500/5 backdrop-blur-sm sm:mx-8">
             <ModernSkills />
           </div>
         </div>
 
-        {/* Experience Section */}
+        {/* Experience — transparent glass */}
         <div id="experience" className="py-8">
-          <div className="mx-4 rounded-3xl border border-white/10 bg-white/[0.05] shadow-2xl shadow-blue-500/10 backdrop-blur-xl sm:mx-8">
+          <div className="mx-4 rounded-3xl border border-white/10 bg-white/[0.06] shadow-xl shadow-blue-500/5 backdrop-blur-sm sm:mx-8">
             <div className="px-4 py-12 sm:py-20">
               <div className="mx-auto max-w-6xl">
                 <div className="mb-12 text-center sm:mb-16">
@@ -58,24 +54,24 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Projects Section */}
+        {/* Projects — transparent glass */}
         <div className="py-4">
-          <div className="mx-4 rounded-3xl border border-white/10 bg-white/[0.08] shadow-2xl shadow-pink-500/10 backdrop-blur-xl sm:mx-8">
+          <div className="mx-4 rounded-3xl border border-white/10 bg-white/[0.06] shadow-xl shadow-pink-500/5 backdrop-blur-sm sm:mx-8">
             <Projects />
           </div>
         </div>
 
-        {/* Contact Section */}
+        {/* Contact — transparent glass */}
         <div className="py-8">
-          <div className="mx-4 rounded-3xl border border-white/10 bg-white/[0.05] shadow-2xl shadow-cyan-500/10 backdrop-blur-xl sm:mx-8">
+          <div className="mx-4 rounded-3xl border border-white/10 bg-white/[0.06] shadow-xl shadow-cyan-500/5 backdrop-blur-sm sm:mx-8">
             <Contact />
           </div>
         </div>
 
-        {/* Footer */}
+        {/* Footer — transparent glass */}
         <footer className="mt-8 px-4 py-8">
           <div className="mx-auto max-w-6xl text-center">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-8 backdrop-blur-xl">
+            <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-8 backdrop-blur-sm">
               <div className="mb-6">
                 <h3 className="mb-2 text-lg font-semibold text-white">
                   {personal.name}
@@ -85,12 +81,11 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Enhanced Social Links */}
               <SocialLinksFooter />
 
               <p className="text-sm text-gray-400">
-                © 2024 {personal.name}. Built with Next.js, TypeScript,
-                Tailwind CSS, and Framer Motion.
+                © {new Date().getFullYear()} {personal.name}. Built with Next.js,
+                TypeScript, Tailwind CSS, and Framer Motion.
               </p>
             </div>
           </div>

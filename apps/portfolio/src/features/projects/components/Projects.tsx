@@ -47,7 +47,7 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="bg-gray-900/30 px-4 py-12 sm:py-20">
+    <section id="projects" className="px-4 py-12 sm:py-20">
       <div className="mx-auto max-w-6xl">
         <div
           ref={ref}
@@ -223,7 +223,7 @@ function ProjectCard({
         transform: "translateY(0)",
       }}
     >
-      <div className="relative overflow-hidden rounded-2xl border border-gray-700 bg-gray-900/50 backdrop-blur-sm transition-all duration-300 hover:border-gray-600 hover:bg-gray-800/50">
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition-all duration-300 hover:border-white/20 hover:bg-white/10">
         {/* Status Badge */}
         {project.status && size !== "small" && (
           <div
@@ -255,17 +255,17 @@ function ProjectCard({
           </div>
         )}
 
-        {/* Project Image */}
-        {project.image && (
-          <div className={`relative ${sizeClasses.image} overflow-hidden`}>
-            <ProjectImage
-              src={project.image}
-              alt={project.name}
-              className="transition-transform duration-300 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/20 transition-colors duration-300 group-hover:bg-black/10" />
-          </div>
-        )}
+        {/* Project visual: real image when set, otherwise category icon (no 404) */}
+        <div className={`relative ${sizeClasses.image} overflow-hidden`}>
+          <ProjectImage
+            src={project.image}
+            alt={project.name}
+            projectId={project.id}
+            category={project.category}
+            className="transition-transform duration-300 group-hover:scale-105"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-black/20 transition-colors duration-300 group-hover:bg-black/10" />
+        </div>
 
         <div className={sizeClasses.container}>
           {/* Project Title */}
@@ -309,13 +309,13 @@ function ProjectCard({
                 .map((tech: string) => (
                   <span
                     key={tech}
-                    className="rounded-lg border border-gray-600 bg-gray-800 px-2 py-1 text-xs font-medium text-gray-300"
+                    className="rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-xs font-medium text-gray-200"
                   >
                     {tech}
                   </span>
                 ))}
               {project.technologies.length > (size === "small" ? 2 : 5) && (
-                <span className="rounded-lg border border-gray-600 bg-gray-800 px-2 py-1 text-xs font-medium text-gray-500">
+                <span className="rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-xs font-medium text-gray-400">
                   +{project.technologies.length - (size === "small" ? 2 : 5)}
                 </span>
               )}

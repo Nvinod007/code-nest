@@ -1,3 +1,9 @@
+/**
+ * Inbox delivery with EmailJS: set real values in .env.local (not placeholders).
+ * In the EmailJS dashboard, the email template’s “To” must be your address
+ * (or use `{{to_email}}` and pass to_email from the app — we send to_email in the template params).
+ * Free tier limits apply; mailto fallback opens the visitor’s mail app instead.
+ */
 export const contactConfig = {
   availability: "Available for freelance work",
   calendlyUrl: "",

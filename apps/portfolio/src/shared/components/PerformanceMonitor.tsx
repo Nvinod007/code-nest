@@ -115,7 +115,7 @@ export default function PerformanceMonitor() {
       return (
         <button
           onClick={toggleMonitor}
-          className="fixed bottom-4 right-4 z-50 rounded-full border border-gray-600 bg-black/80 p-2 text-xs text-gray-400 backdrop-blur-sm transition-all hover:bg-gray-800 hover:text-white"
+          className="fixed bottom-4 right-4 z-50 rounded-full border border-gray-600 bg-gray-900/95 p-2 text-xs text-gray-400 transition-all hover:bg-gray-800 hover:text-white"
           title="Show Performance Monitor (Ctrl+Shift+P)"
         >
           ⚡
@@ -128,7 +128,7 @@ export default function PerformanceMonitor() {
 
   return (
     <div 
-      className="fixed bottom-4 right-4 z-50 cursor-pointer rounded-lg border border-gray-600 bg-black/80 p-3 font-mono text-xs text-white backdrop-blur-sm transition-opacity hover:opacity-80"
+      className="fixed bottom-4 right-4 z-50 cursor-pointer rounded-lg border border-gray-600 bg-gray-900/95 p-3 font-mono text-xs text-white transition-opacity hover:opacity-80"
       onClick={toggleMonitor}
       title="Click to hide or press Ctrl+Shift+P to toggle"
     >

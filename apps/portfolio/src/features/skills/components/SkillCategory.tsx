@@ -27,12 +27,17 @@ export default function SkillCategory({
   categoryIndex,
   inView,
 }: SkillCategoryProps) {
+  const isAsymmetric = categoryIndex % 3 === 1;
   return (
     <motion.div variants={itemVariants} className="group">
-      <div className="h-full rounded-2xl border border-gray-700 bg-gray-900/50 p-4 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:border-gray-600 hover:bg-gray-800/50 sm:p-6">
+      <div
+        className={`h-full border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:scale-[1.02] hover:border-white/20 hover:bg-white/10 sm:p-6 ${
+          isAsymmetric ? "rounded-tl-[2rem] rounded-br-[1.5rem] rounded-tr-xl rounded-bl-xl" : "rounded-3xl"
+        }`}
+      >
         <div className="mb-4 flex items-center gap-3 sm:mb-6">
           <div
-            className={`h-10 w-10 rounded-xl bg-gradient-to-r sm:h-12 sm:w-12 ${color} flex items-center justify-center text-xl sm:text-2xl`}
+            className={`h-10 w-10 rounded-2xl bg-gradient-to-r sm:h-12 sm:w-12 ${color} flex items-center justify-center text-xl sm:text-2xl`}
           >
             {icon}
           </div>
