@@ -2,11 +2,18 @@
   "name": "@code-nest/portfolio",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "eslint .",
+    "start": "next start",
+    "vercel-build": "next build"
+  },
   "nx": {
     "name": "portfolio"
   },
   "dependencies": {
-    "next": "~15.1.4",
+    "next": "~15.1.8",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "framer-motion": "^11.5.4",

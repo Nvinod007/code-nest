@@ -6,6 +6,10 @@ const { composePlugins, withNx } = require("@nx/next");
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
 const nextConfig = {
+  /** Nx ESLint rules need a ProjectGraph; Vercel’s `next build` often has no graph — use `nx run portfolio:lint` in CI. */
+  eslint: {
+    ignoreDuringBuilds: process.env.VERCEL === "1",
+  },
   experimental: {
     appNavFailHandling: true,
   },
