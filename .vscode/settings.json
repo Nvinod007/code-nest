@@ -22,4 +22,5 @@
     "editor.formatOnSave": true
   },
   "prisma.trace.server": "messages",
+  "nxConsole.generateAiAgentRules": true,
 }

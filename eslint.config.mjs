@@ -38,7 +38,6 @@ export default [
         },
       ],
       "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/explicit-module-boundary-types": "error",
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "sort-keys-fix/sort-keys-fix": ["error", "asc", { caseSensitive: true, natural: false }],
     },
