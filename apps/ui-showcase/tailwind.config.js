@@ -1,6 +1,7 @@
 // @ts-check
 
-const { createGlobPatternsForDependencies } = require("@nx/next/tailwind");
+const { join } = require("path");
+const { createGlobPatternsForDependencies } = require("@nx/react/tailwind");
 const { heroui } = require("@heroui/theme");
 
 /**
@@ -27,21 +28,15 @@ const heroPresetSlate = {
   },
 };
 
-function nxContentGlobs() {
-  try {
-    return createGlobPatternsForDependencies(__dirname);
-  } catch {
-    return [];
-  }
-}
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./{src,pages,components,app}/**/*.{ts,tsx,js,jsx,html}",
-    "!./{src,pages,components,app}/**/*.{stories,spec}.{ts,tsx,js,jsx,html}",
-    "../../libs/ui/src/**/*.{ts,tsx,js,jsx,html}",
-    ...nxContentGlobs(),
+    join(
+      __dirname,
+      "{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,js,jsx,html,mdx}"
+    ),
+    join(__dirname, "../../libs/ui/src/**/*!(*.stories|*.spec).{ts,tsx,js,jsx,html}"),
+    ...createGlobPatternsForDependencies(__dirname),
   ],
   darkMode: "class",
   plugins: [

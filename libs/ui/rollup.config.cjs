@@ -2,12 +2,18 @@ const { withNx } = require("@nx/rollup/with-nx");
 const url = require("@rollup/plugin-url");
 const svg = require("@svgr/rollup");
 
+// Library consumers (Next production prerender) need automatic JSX from `react/jsx-runtime`,
+// not `jsxDEV` from `react/jsx-dev-runtime`. CI often runs Rollup without NODE_ENV set.
+if (process.env.NODE_ENV !== "test") {
+  process.env.NODE_ENV = "production";
+}
+
 module.exports = withNx(
   {
     main: "./src/index.ts",
     outputPath: "./dist",
     tsConfig: "./tsconfig.lib.json",
-    compiler: "babel",
+    compiler: "swc",
     format: ["esm"],
     assets: [{ input: ".", output: ".", glob: "README.md" }],
   },
