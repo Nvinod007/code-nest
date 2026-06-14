@@ -48,12 +48,12 @@ export default function PerformanceMonitor() {
         setStats(prev => ({
           ...prev,
           fps,
-          memory: (performance as ExtendedPerformance).memory
-            ? Math.round(
-                (performance as ExtendedPerformance).memory!.usedJSHeapSize /
-                  1048576
-              )
-            : 0,
+          memory: (() => {
+            const memoryInfo = (performance as ExtendedPerformance).memory;
+            return memoryInfo?.usedJSHeapSize
+              ? Math.round(memoryInfo.usedJSHeapSize / 1048576)
+              : 0;
+          })(),
           renderTime: Math.round(currentTime - lastTime),
         }));
 
