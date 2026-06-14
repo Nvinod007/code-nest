@@ -13,6 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      </head>
       <body className="cursor-none overflow-x-hidden bg-black text-white">
         {children}
       </body>
