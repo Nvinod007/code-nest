@@ -1,4 +1,5 @@
 import nx from "@nx/eslint-plugin";
+import sortKeysPlugin from "eslint-plugin-sort-keys-fix";
 
 export default [
   ...nx.configs["flat/base"],
@@ -13,6 +14,9 @@ export default [
   },
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+    plugins: {
+      "sort-keys-fix": sortKeysPlugin
+    },
     settings: {
       "import/resolver": {
         typescript: true,
@@ -33,13 +37,10 @@ export default [
           ],
         },
       ],
-      "@typescript-eslint/explicit-function-return-type": "error",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/explicit-module-boundary-types": "error",
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        { argsIgnorePattern: "^_" },
-      ],
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+      "sort-keys-fix/sort-keys-fix": ["error", "asc", { caseSensitive: true, natural: false }],
     },
   },
   {
@@ -53,6 +54,9 @@ export default [
       "**/*.cjs",
       "**/*.mjs",
     ],
-    rules: {},
+    rules: {
+      "no-console": ["error", { allow: ["warn","info", "error"] }]
+    },
+   
   },
 ];
