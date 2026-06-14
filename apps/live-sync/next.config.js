@@ -11,6 +11,10 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  webpack: (config, { isServer }) => {
+    config.cache = false;
+    return config;
+  },
 };
 
 const plugins = [
