@@ -123,7 +123,7 @@ export const portfolioData = {
     name: "Vinod Kumar Nelanakula",
     phone: "7981181409",
     // Add your photo path
-    resume: "/assets/resume.pdf",
+    resume: "/assets/VinodKumar_Fullstack.pdf",
 
     subtitle: "React & React Native Expert",
 
