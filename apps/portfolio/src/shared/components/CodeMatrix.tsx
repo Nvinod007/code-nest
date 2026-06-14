@@ -10,9 +10,11 @@ export default function CodeMatrix() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
+    queueMicrotask(() => {
+      setIsMounted(true);
+      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      setPrefersReducedMotion(mediaQuery.matches);
+    });
   }, []);
 
   if (!isMounted || prefersReducedMotion) return null;

@@ -13,6 +13,7 @@ permissions:
 jobs:
   main:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,7 +36,6 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install
-      - run: pnpm add -g prisma
       - run: pnpm exec prisma generate --schema apps/live-sync-be/src/prisma/schema.prisma
       # - run: pnpm exec playwright install --with-deps
       - uses: nrwl/nx-set-shas@v4
@@ -44,4 +44,4 @@ jobs:
       # - run: pnpm exec nx-cloud record -- echo Hello World
       # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
       # When you enable task distribution, run the e2e-ci task instead of e2e
-      - run: pnpm exec nx affected -t lint test build e2e
+      - run: pnpm exec nx affected -t lint test build e2e --output-style=stream

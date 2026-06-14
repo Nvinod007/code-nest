@@ -8,7 +8,7 @@ export default function AnimatedBackground() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    setIsMounted(true);
+    queueMicrotask(() => setIsMounted(true));
 
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });

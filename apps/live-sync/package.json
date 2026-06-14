@@ -2,11 +2,16 @@
   "name": "@code-nest/live-sync",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "build": "next build --webpack",
+    "dev": "next dev",
+    "start": "next start"
+  },
   "nx": {
     "name": "live-sync"
   },
   "dependencies": {
-    "next": "~15.1.4",
+    "next": "~16.2.4",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   }

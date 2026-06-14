@@ -1,3 +1,4 @@
+import type { ReactElement, ReactNode } from "react";
 import "./global.css";
 
 export const metadata = {
@@ -8,8 +9,8 @@ export const metadata = {
 export const RootLayout = ({
   children,
 }: {
-  children: React.ReactNode;
-}): JSX.Element => {
+  children: ReactNode;
+}): ReactElement => {
   return (
     <html lang="en">
       <body>{children}</body>

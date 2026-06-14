@@ -16,13 +16,13 @@ export {
   type CodeNestProviderProps,
   type CodeNestThemeContextValue,
   useCodeNestTheme,
-} from "./lib/code-nest-provider.js";
-export { buttonVariants, type ButtonVariantProps } from "./lib/button-variants.js";
-export { HeroPrimaryButton } from "./lib/hero-primary-button.js";
+} from "./lib/code-nest-provider";
+export { buttonVariants, type ButtonVariantProps } from "./lib/button-variants";
+export { HeroPrimaryButton } from "./lib/hero-primary-button";
 export {
   ShadcnButton,
   type ShadcnButtonProps,
-} from "./lib/shadcn-button.js";
+} from "./lib/shadcn-button";
 export {
   Card,
   CardContent,
@@ -30,9 +30,9 @@ export {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./lib/shadcn-card.js";
-export { ThemeToggle } from "./lib/theme-toggle.js";
-export { cn } from "./lib/utils/cn.js";
+} from "./lib/shadcn-card";
+export { ThemeToggle } from "./lib/theme-toggle";
+export { cn } from "./lib/utils/cn";
 
 /**
  * Full HeroUI surface (Button, Card, Modal, …) under one namespace so it does not

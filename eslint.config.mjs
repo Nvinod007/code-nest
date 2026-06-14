@@ -1,10 +1,7 @@
 import nx from "@nx/eslint-plugin";
 import sortKeysPlugin from "eslint-plugin-sort-keys-fix";
 
-export default [
-  ...nx.configs["flat/base"],
-  ...nx.configs["flat/typescript"],
-  ...nx.configs["flat/javascript"],
+const sharedIgnoresAndRules = [
   {
     ignores: [
       "**/dist",
@@ -15,7 +12,7 @@ export default [
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
     plugins: {
-      "sort-keys-fix": sortKeysPlugin
+      "sort-keys-fix": sortKeysPlugin,
     },
     settings: {
       "import/resolver": {
@@ -37,9 +34,14 @@ export default [
           ],
         },
       ],
+      "sort-keys-fix/sort-keys-fix": ["error", "asc", { caseSensitive: true, natural: false }],
+    },
+  },
+  {
+    files: ["**/*.ts", "**/*.tsx", "**/*.cts", "**/*.mts"],
+    rules: {
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
-      "sort-keys-fix/sort-keys-fix": ["error", "asc", { caseSensitive: true, natural: false }],
     },
   },
   {
@@ -54,8 +56,17 @@ export default [
       "**/*.mjs",
     ],
     rules: {
-      "no-console": ["error", { allow: ["warn","info", "error"] }]
+      "no-console": ["error", { allow: ["warn", "info", "error"] }],
     },
-   
   },
+];
+
+// Next apps: omit Nx flat TS/JS (conflicts with eslint-config-next’s @typescript-eslint).
+export const eslintConfigsForNextApps = [...nx.configs["flat/base"], ...sharedIgnoresAndRules];
+
+export default [
+  ...nx.configs["flat/base"],
+  ...nx.configs["flat/typescript"],
+  ...nx.configs["flat/javascript"],
+  ...sharedIgnoresAndRules,
 ];

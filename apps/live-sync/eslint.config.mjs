@@ -1,34 +1,23 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import js from '@eslint/js';
-import { fixupConfigRules } from '@eslint/compat';
-import nx from '@nx/eslint-plugin';
-import baseConfig from '../../eslint.config.mjs';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import { eslintConfigsForNextApps } from "../../eslint.config.mjs";
 
 const config = [
-  ...fixupConfigRules(compat.extends('next')),
-  ...fixupConfigRules(compat.extends('next/core-web-vitals')),
-  ...baseConfig,
-  ...nx.configs['flat/react-typescript'],
-
+  ...nextCoreWebVitals,
+  ...eslintConfigsForNextApps,
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+    files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
     rules: {
-      'import/no-default-export': 'off',
-      '@typescript-eslint/explicit-function-return-type': 'off',
-      '@typescript-eslint/no-explicit-any': 'error',
+      "import/no-default-export": "off",
     },
   },
   {
-    ignores: ['.next/**/*', 'node_modules/**/*'],
+    files: ["**/*.ts", "**/*.tsx"],
+    rules: {
+      "@typescript-eslint/explicit-function-return-type": "off",
+    },
+  },
+  {
+    ignores: [".next/**/*", "node_modules/**/*"],
   },
 ];
 export default config;

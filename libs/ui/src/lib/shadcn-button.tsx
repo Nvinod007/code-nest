@@ -3,8 +3,8 @@
 import { Slot } from "@radix-ui/react-slot";
 import * as React from "react";
 
-import { cn } from "./utils/cn.js";
-import { type ButtonVariantProps, buttonVariants } from "./button-variants.js";
+import { cn } from "./utils/cn";
+import { type ButtonVariantProps, buttonVariants } from "./button-variants";
 
 export type ShadcnButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   ButtonVariantProps & {

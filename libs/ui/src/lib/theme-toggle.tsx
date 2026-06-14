@@ -4,7 +4,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import * as React from "react";
 
-import { ShadcnButton } from "./shadcn-button.js";
+import { ShadcnButton } from "./shadcn-button";
 
 /** Toggles `next-themes` class on `<html>` (light / dark). */
 export function ThemeToggle() {

@@ -38,15 +38,16 @@ export default function PerformanceMonitor() {
 
   // Initialize visibility based on environment and localStorage
   useEffect(() => {
-    const isDev = process.env.NODE_ENV === "development";
-    const savedPreference = typeof window !== "undefined" 
-      ? localStorage.getItem("performance-monitor-enabled")
-      : null;
-    
-    // Show by default in dev, or if manually enabled in production
-    const shouldShow = isDev || savedPreference === "true";
-    setIsEnabled(shouldShow);
-    setIsVisible(shouldShow);
+    queueMicrotask(() => {
+      const isDev = process.env.NODE_ENV === "development";
+      const savedPreference =
+        typeof window !== "undefined"
+          ? localStorage.getItem("performance-monitor-enabled")
+          : null;
+      const shouldShow = isDev || savedPreference === "true";
+      setIsEnabled(shouldShow);
+      setIsVisible(shouldShow);
+    });
   }, []);
 
   // Toggle functionality with Ctrl+Shift+P

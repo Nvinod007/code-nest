@@ -11,7 +11,7 @@ export function useReducedMotion(): boolean {
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(media.matches);
+    queueMicrotask(() => setReduced(media.matches));
     const handler = () => setReduced(media.matches);
     media.addEventListener("change", handler);
     return () => media.removeEventListener("change", handler);

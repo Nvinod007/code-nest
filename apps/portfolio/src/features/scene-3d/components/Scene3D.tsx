@@ -23,7 +23,7 @@ export default function Scene3D() {
   }, [scrollYProgress]);
 
   useEffect(() => {
-    setIsMounted(true);
+    queueMicrotask(() => setIsMounted(true));
   }, []);
 
   useEffect(() => {

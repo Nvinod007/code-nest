@@ -7,7 +7,7 @@ export default function WaveEffect() {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    queueMicrotask(() => setIsMounted(true));
   }, []);
 
   if (!isMounted) return null;

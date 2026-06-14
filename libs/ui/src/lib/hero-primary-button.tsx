@@ -5,7 +5,7 @@ import { Button, type ButtonProps } from "@heroui/react";
 import { useTheme } from "next-themes";
 import * as React from "react";
 
-import { useCodeNestTheme } from "./code-nest-provider.js";
+import { useCodeNestTheme } from "./code-nest-provider";
 
 /**
  * HeroUI button tinted with the **active Code Nest preset** (tracks `useCodeNestTheme` + light/dark).

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { createElement, useState } from "react";
 import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -58,7 +58,7 @@ export default function ProjectImage({
   category,
 }: ProjectImageProps) {
   const [imageError, setImageError] = useState(false);
-  const Icon = getProjectVisual(projectId, category);
+  const IconCmp = getProjectVisual(projectId, category);
   const hasValidSrc = Boolean(src && src.trim() !== "");
 
   const showIconOnly = !hasValidSrc || imageError;
@@ -69,7 +69,10 @@ export default function ProjectImage({
         className={`absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-slate-800/90 to-slate-900 ${className}`}
       >
         <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 text-white shadow-lg sm:h-20 sm:w-20">
-          <Icon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={1.5} />
+          {createElement(IconCmp, {
+            className: "h-8 w-8 sm:h-10 sm:w-10",
+            strokeWidth: 1.5,
+          })}
         </div>
         <p className="mt-3 max-w-[90%] truncate px-2 text-center text-sm font-medium text-gray-300">
           {alt}
