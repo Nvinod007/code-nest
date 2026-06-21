@@ -9,7 +9,6 @@ import {
   Code2,
   Film,
   Gamepad2,
-  Globe,
   MapPin,
   Music,
   ShoppingCart,
@@ -20,14 +19,16 @@ import {
 function getProjectVisual(projectId: string, category: string): LucideIcon {
   const byId: Record<string, LucideIcon> = {
     "calculator-node": Calculator,
+    "code-nest": Code2,
     drawnguess: Gamepad2,
+    "exec-lens": Code2,
     "food-ordering": ShoppingCart,
-    "live-sync": Globe,
     "location-finder": MapPin,
     "music-player": Music,
     nexgpt: Film,
     "pim-match": BarChart3,
     "react-exploration": Code2,
+    "sprint-poker": BarChart3,
     "wifi-data-sharing": Wifi,
   };
   if (byId[projectId]) return byId[projectId];

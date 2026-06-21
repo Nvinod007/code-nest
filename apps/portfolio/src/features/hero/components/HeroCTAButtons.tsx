@@ -62,38 +62,18 @@ export default function HeroCTAButtons() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => {
-            const resumeUrl = personal.resume;
-            
-            // Check if it's an external URL (GitHub)
-            if (resumeUrl.startsWith('http')) {
-              // External URL - open in new tab for download
-              const link = document.createElement('a');
-              link.href = resumeUrl;
-              link.download = 'Vinod_Kumar_Nelanakula_Resume.pdf';
-              link.target = '_blank';
-              link.rel = 'noopener noreferrer';
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-            } else {
-              // Local file - check if exists first
-              fetch(resumeUrl, { method: 'HEAD' })
-                .then(response => {
-                  if (response.ok) {
-                    const link = document.createElement('a');
-                    link.href = resumeUrl;
-                    link.download = 'Vinod_Kumar_Nelanakula_Resume.pdf';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                  } else {
-                    alert('📋 Resume coming soon!\n\nFor now, you can contact me directly to request my latest resume.');
-                  }
-                })
-                .catch(() => {
-                  alert('📋 Resume download temporarily unavailable.\n\nPlease contact me directly for my latest resume!');
-                });
+            const link = document.createElement("a");
+            link.href = personal.resume;
+            link.download =
+              personal.resumeDownloadFileName ??
+              "Vinod_Kumar_Nelanakula_Resume.pdf";
+            if (personal.resume.startsWith("http")) {
+              link.target = "_blank";
+              link.rel = "noopener noreferrer";
             }
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
           }}
         >
           <Download className="h-4 w-4 sm:h-5 sm:w-5" />

@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Send, CheckCircle, AlertCircle, Mail } from "lucide-react";
 import { portfolioData } from "@/config/portfolio-data";
 import emailjs from "@emailjs/browser";
+
+const SUCCESS_DISPLAY_MS = 4500;
+const MAILAPP_HINT_DISPLAY_MS = 5000;
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -13,6 +16,7 @@ const itemVariants = {
 
 export default function ContactForm() {
   const { personal, contact } = portfolioData;
+  const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -23,7 +27,22 @@ export default function ContactForm() {
   const [formStatus, setFormStatus] = useState<
     "idle" | "sending" | "success" | "error" | "mailapp-pending"
   >("idle");
-  const [successHint, setSuccessHint] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
+
+  useEffect(() => {
+    return () => {
+      if (resetTimerRef.current) clearTimeout(resetTimerRef.current);
+    };
+  }, []);
+
+  const scheduleReset = (delayMs: number) => {
+    if (resetTimerRef.current) clearTimeout(resetTimerRef.current);
+    resetTimerRef.current = setTimeout(() => {
+      setFormStatus("idle");
+      setStatusMessage("");
+      resetTimerRef.current = null;
+    }, delayMs);
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -47,7 +66,7 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("sending");
-    let resetToIdleAfterMs = 3000;
+    setStatusMessage("");
 
     const { serviceId, templateId, publicKey } = contact.emailjs;
     const hasEmailJs =
@@ -78,33 +97,29 @@ export default function ContactForm() {
           },
           publicKey
         );
-        setSuccessHint(
-          "Check your inbox (and spam). In EmailJS, the template “To Email” must be set to your address."
-        );
+        setStatusMessage("Email sent successfully!");
         setFormStatus("success");
         setFormData({ email: "", message: "", name: "", subject: "" });
+        scheduleReset(SUCCESS_DISPLAY_MS);
       } else {
         openMailto();
-        setSuccessHint(
-          "No email service configured — your mail app should open with a draft. Press Send there to deliver."
+        setStatusMessage(
+          "Your mail app should open — press Send there to deliver your message."
         );
         setFormStatus("mailapp-pending");
         setFormData({ email: "", message: "", name: "", subject: "" });
-        resetToIdleAfterMs = 6000;
+        scheduleReset(MAILAPP_HINT_DISPLAY_MS);
       }
     } catch (error) {
-      // EmailJS failed → mailto fallback; not delivered until user sends from mail app
       console.warn("EmailJS failed, falling back to mailto:", error);
       openMailto();
-      setSuccessHint(
-        "Could not send through the site. Your mail app should open — press Send there to deliver your message."
+      setStatusMessage(
+        "Could not send through the site. Your mail app should open — press Send there to deliver."
       );
       setFormStatus("mailapp-pending");
       setFormData({ email: "", message: "", name: "", subject: "" });
-      resetToIdleAfterMs = 6000;
+      scheduleReset(MAILAPP_HINT_DISPLAY_MS);
     }
-
-    setTimeout(() => setFormStatus("idle"), resetToIdleAfterMs);
   };
 
   return (
@@ -193,6 +208,26 @@ export default function ContactForm() {
           />
         </div>
 
+        {(formStatus === "success" || formStatus === "mailapp-pending") && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className={`flex items-center justify-center gap-2 rounded-lg border px-4 py-3 text-sm font-medium sm:text-base ${
+              formStatus === "success"
+                ? "border-green-500/40 bg-green-500/15 text-green-300"
+                : "border-amber-500/40 bg-amber-500/15 text-amber-200"
+            }`}
+          >
+            {formStatus === "success" ? (
+              <CheckCircle className="h-5 w-5 shrink-0" />
+            ) : (
+              <Mail className="h-5 w-5 shrink-0" />
+            )}
+            {statusMessage}
+          </motion.div>
+        )}
+
         <motion.button
           type="submit"
           disabled={formStatus === "sending"}
@@ -222,27 +257,10 @@ export default function ContactForm() {
 
           {formStatus === "idle" && "Send Message"}
           {formStatus === "sending" && "Sending Message..."}
-          {formStatus === "success" && "Message Sent!"}
+          {formStatus === "success" && "Email Sent Successfully!"}
           {formStatus === "mailapp-pending" && "Finish sending from mail"}
           {formStatus === "error" && "Please Try Again"}
         </motion.button>
-
-        {(formStatus === "success" || formStatus === "mailapp-pending") && (
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={
-              formStatus === "success"
-                ? "text-center text-sm text-green-400"
-                : "text-center text-sm text-amber-200"
-            }
-          >
-            {successHint ||
-              (formStatus === "success"
-                ? "Your message has been sent successfully!"
-                : "")}
-          </motion.p>
-        )}
       </form>
     </motion.div>
   );

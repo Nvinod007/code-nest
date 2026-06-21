@@ -26,25 +26,8 @@ export default function Projects() {
       ? projects
       : projects.filter(p => p.category === selectedCategory);
 
-  // Separate projects by importance
-  const featuredProjects = filteredProjects.filter(p =>
-    ["live-sync", "drawnguess"].includes(p.id)
-  );
-
-  const learningProjects = filteredProjects.filter(p =>
-    ["nexgpt", "food-ordering", "pim-match"].includes(p.id)
-  );
-
-  const archiveProjects = filteredProjects.filter(
-    p =>
-      ![
-        "live-sync",
-        "drawnguess",
-        "nexgpt",
-        "food-ordering",
-        "pim-match",
-      ].includes(p.id)
-  );
+  const featuredProjects = filteredProjects.filter(p => p.featured);
+  const archiveProjects = filteredProjects.filter(p => !p.featured);
 
   return (
     <section id="projects" className="px-4 py-12 sm:py-20">
@@ -59,7 +42,7 @@ export default function Projects() {
             Featured Projects
           </h2>
           <p className="mx-auto max-w-2xl px-4 text-base text-gray-400 sm:px-0 sm:text-lg">
-            A showcase of my development journey and key projects
+            Shipped side projects and production apps — live demos first
           </p>
 
           {/* Category Filter */}
@@ -104,32 +87,6 @@ export default function Projects() {
             ))}
           </div>
         </div>
-
-        {/* Learning Projects */}
-        {learningProjects.length > 0 && (
-          <div
-            className={`delay-400 mb-16 transition-all duration-1000 ${
-              inView ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            }`}
-          >
-            <h3 className="mb-4 text-xl font-semibold text-gray-300">
-              📚 Learning & Development Projects
-            </h3>
-            <p className="mb-6 text-sm text-gray-400">
-              Projects built while exploring new technologies and concepts
-            </p>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {learningProjects.map((project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  index={index}
-                  size="medium"
-                />
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Archive Projects - Collapsible */}
         {archiveProjects.length > 0 && (
@@ -248,15 +205,13 @@ function ProjectCard({
           </div>
         )}
 
-        {/* Category Badge */}
-        {project.category && size !== "small" && (
-          <div className="absolute bottom-4 left-4 z-10 rounded-full bg-black/70 px-3 py-1 text-xs font-medium text-white">
-            {project.category}
-          </div>
-        )}
-
         {/* Project visual: real image when set, otherwise category icon (no 404) */}
         <div className={`relative ${sizeClasses.image} overflow-hidden`}>
+          {project.category && size !== "small" && (
+            <div className="absolute bottom-4 left-4 z-10 rounded-full bg-black/70 px-3 py-1 text-xs font-medium text-white">
+              {project.category}
+            </div>
+          )}
           <ProjectImage
             src={project.image}
             alt={project.name}

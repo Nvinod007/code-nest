@@ -21,12 +21,23 @@ export type PortfolioProject = {
 export const portfolioData = {
   certifications: [
     {
-      date: "2024",
-      name: "Certified Safe Agile Scrum Master",
-      organization: "Agile Alliance",
+      date: "",
+      name: "Certified SAFe Agile Scrum Master",
+      organization: "Scaled Agile",
+      url: "https://github.com/Nvinod007/documents/blob/main/office/2_carrier/scrum_master_certif.pdf",
+    },
+    {
+      date: "Apr 2026",
+      name: "AWS Certified AI Practitioner",
+      organization: "Amazon Web Services (AWS)",
       url: "#",
     },
-    // Add more certifications
+    {
+      date: "Apr 2026",
+      name: "Supervised Machine Learning: Regression and Classification",
+      organization: "DeepLearning.AI",
+      url: "#",
+    },
   ],
   contact: contactConfig,
   education: [
@@ -38,46 +49,39 @@ export const portfolioData = {
       location: "Kadapa, AP",
       startDate: "Jul 2019",
     },
-    {
-      degree: "Pre-University",
-      endDate: "May 2019",
-      grade: "CGPA: 8.2",
-      institution: "RGUKT IIIT RKV",
-      location: "Kadapa, AP",
-      startDate: "Jul 2017",
-    },
   ],
   experience: [
     {
       company: "Carrier Global Technologies",
       description:
-        "Building scalable web and mobile applications for smart HVAC systems",
+        "Software Engineer on Carrier SmartHome — React Native mobile, RN Web portal, and full-stack support tools in production.",
       endDate: "Present",
       id: "carrier-2023",
       location: "Hyderabad, TG",
       logo: "/assets/companies/carrier.png",
-      position: "Associate Software Engineer",
+      position: "Software Engineer",
       projects: [
         {
           achievements: [
-            "Bootstrapped the project from scratch using React Native Web, Tailwind CSS, Webpack, and Vite",
-            "Implemented deep linking and SEO optimizations, significantly improving search visibility",
-            "Enhanced user experience by optimizing bundle size, lazy loading, and responsive rendering",
-            "Increased test coverage to 90% using Jest and React Testing Library",
+            "Bootstrapped cross-platform web app from scratch — React Native Web, Tailwind, Webpack, and Vite",
+            "Implemented deep linking and SEO optimisations — improved search visibility for my.carrier.com",
+            "Reached 90% test coverage with Jest and React Testing Library",
+            "Integrated analytics and auth flows for production homeowners",
           ],
           description:
-            "A responsive web platform enabling homeowners to manage smart HVAC devices and access real-time insights.",
+            "Responsive web platform for homeowners to manage smart HVAC devices. Live: https://my.carrier.com/login",
           name: "Consumer Portal Web",
           technologies: ["React", "React Native Web", "Tailwind CSS", "Webpack", "Vite"],
         },
         {
           achievements: [
-            "Built responsive UI with React 18, TypeScript, Redux Toolkit, and Firebase Auth",
-            "Implemented real-time tracking using RTK Query and browser geolocation",
-            "Designed layouts with Material UI and Tailwind CSS; integrated MongoDB geo queries, Redis, BullMQ, and i18n",
+            "Shipped React 18 support portal with TypeScript, Redux Toolkit, and Firebase Auth",
+            "Built real-time technician tracking — RTK Query plus browser geolocation",
+            "Integrated MongoDB geo queries, Redis caching, BullMQ job queues, and i18n",
+            "Delivered responsive UI with Material UI and Tailwind CSS",
           ],
           description:
-            "Full-stack support web app for field technicians with real-time tracking and responsive React front end.",
+            "Full-stack support app for field technicians with real-time tracking. Live: https://customer-support-007.web.app/",
           name: "Carrier Support Portal",
           technologies: [
             "React 18",
@@ -90,13 +94,14 @@ export const portfolioData = {
         },
         {
           achievements: [
-            "Developed core mobile features to monitor indoor air quality and device connectivity",
-            "Integrated real-time APIs to provide pollution data overlays",
-            "Participated in app redesign improving stability and device compatibility",
-            "Added geospatial matching via MongoDB geo queries and Redis caching",
+            "Contributed to React Native platform upgrade — improved stability and performance across releases",
+            "Hardened Wi‑Fi connectivity and scan edge cases — fewer production interruptions",
+            "Shipped auth, device connectivity, and energy management flows for smart HVAC users",
+            "Added TalkBack accessibility and localization for global markets",
+            "Maintained production through iterative fixes, reverts, and follow-up releases",
           ],
           description:
-            "React Native mobile application for Carrier smart HVAC system users.",
+            "React Native mobile app for Carrier smart HVAC users — production at scale.",
           name: "SmartHome App",
           technologies: [
             "React Native",
@@ -106,14 +111,14 @@ export const portfolioData = {
           ],
         },
       ],
-      startDate: "Jun 2023",
+      startDate: "Apr 2023",
       // Add company logo
       website: "https://carrier.com",
     },
     {
       company: "Cartracker",
       description:
-        "Developed internal inventory management system and payment gateway integration",
+        "Internship — inventory system and Stripe payment integration on Node.js/Express.",
       endDate: "Apr 2023",
       id: "cartracker-2023",
       location: "Hyderabad, TG",
@@ -121,12 +126,12 @@ export const portfolioData = {
       projects: [
         {
           achievements: [
-            "Integrated the Stripe payment gateway into existing systems",
-            "Quickly ramped up on Node.js and Express.js within 2 weeks",
-            "Demonstrated adaptability and commitment to fast-paced learning",
+            "Integrated Stripe payment gateway into existing systems",
+            "Ramped on Node.js and Express.js in 2 weeks",
+            "Built internal inventory management as first full-stack application",
           ],
           description:
-            "Spearheaded the development of an internal inventory management system as my first full-stack application.",
+            "Internal inventory management system with payment gateway integration.",
           name: "Internal Inventory Management System",
           technologies: ["Node.js", "Express.js"],
         },
@@ -137,45 +142,58 @@ export const portfolioData = {
   personal: personalConfig,
   projects: [
     {
-      category: "Web Application",
+      category: "Developer Tools",
       description:
-        "Real-time communication platform featuring live video calls, instant messaging, and collaborative tools.",
+        "Step-by-step JavaScript execution visualizer — call stack, event loop, and async/await. CodeMirror 6 editor with Node sandbox API.",
       featured: true,
       features: [
-        "Real-time chat messaging",
-        "Video conferencing",
-        "Live collaboration tools",
-        "Screen sharing capabilities",
-        "Secure communications",
+        "Call stack & event loop visualization",
+        "Async/await step tracing",
+        "CodeMirror 6 + shadcn/ui editor",
+        "POST /api/run Node sandbox",
+        "Acorn + esbuild AST pipeline",
       ],
-      githubUrl: "https://github.com/Nvinod007/code-nest",
-      id: "live-sync",
-      liveUrl: "https://live-sync.vercel.app",
-      name: "Live Sync",
+      githubUrl: "https://github.com/Nvinod007/exec-lens",
+      id: "exec-lens",
+      liveUrl: "https://js-exec-lens.vercel.app/",
+      name: "ExecLens",
       status: "deployed",
-      technologies: [
-        "Next.js",
-        "WebRTC",
-        "WebSocket",
-        "Tailwind CSS",
-        "TypeScript",
+      technologies: ["Next.js", "TypeScript", "CodeMirror 6", "shadcn/ui", "Node.js"],
+    },
+    {
+      category: "Web Application",
+      description:
+        "No-login planning poker — create a room, share the code, vote, and reveal in real time.",
+      featured: true,
+      features: [
+        "Create room without sign-up",
+        "Share room code instantly",
+        "Real-time voting",
+        "Reveal votes in sync",
+        "Supabase Realtime backend",
       ],
+      githubUrl: "https://github.com/Nvinod007/sprint-poker",
+      id: "sprint-poker",
+      liveUrl: "https://sprintpoker.vercel.app/",
+      name: "Sprint Poker",
+      status: "deployed",
+      technologies: ["Next.js", "React", "TypeScript", "Supabase Realtime"],
     },
     {
       category: "Game Development",
       description:
-        "Interactive drawing and guessing game with real-time multiplayer features. Players can draw and guess what others are drawing in an engaging social gaming experience.",
+        "Multiplayer pictionary — lobby live at drawnplay.vercel.app (create/join rooms). Building real-time canvas drawing and scoring.",
       featured: true,
       features: [
-        "Real-time drawing collaboration",
-        "Multiplayer guessing game",
-        "Interactive canvas drawing",
-        "Live chat integration",
-        "Score tracking system",
+        "Create and join game rooms",
+        "Lobby shipped and live",
+        "Real-time canvas drawing (in progress)",
+        "Socket.io multiplayer",
+        "Score tracking (in progress)",
       ],
       githubUrl: "https://github.com/Nvinod007/drawnguess",
       id: "drawnguess",
-      liveUrl: "",
+      liveUrl: "https://drawnplay.vercel.app/",
       name: "DrawnGuess",
       status: "wip",
       technologies: [
@@ -189,8 +207,27 @@ export const portfolioData = {
     {
       category: "Web Application",
       description:
-        "Netflix-inspired frontend application with authentication, Google Firebase integration, and ChatGPT API integration for intelligent content recommendations.",
+        "This portfolio — Nx monorepo with shared UI, types, themes, and Nx Cloud caching.",
       featured: true,
+      features: [
+        "Nx monorepo architecture",
+        "Shared UI components & themes",
+        "Portfolio app with Next.js",
+        "Nx Cloud build caching",
+        "TypeScript throughout",
+      ],
+      githubUrl: "https://github.com/Nvinod007/code-nest",
+      id: "code-nest",
+      liveUrl: "https://vinodkumar-flame.vercel.app/",
+      name: "CodeNest",
+      status: "deployed",
+      technologies: ["Next.js", "TypeScript", "Nx", "Tailwind CSS", "Framer Motion"],
+    },
+    {
+      category: "Web Application",
+      description:
+        "Netflix-inspired frontend with Firebase auth and ChatGPT-powered content recommendations — learning project.",
+      featured: false,
       features: [
         "Netflix-style UI/UX",
         "Firebase Authentication",

@@ -83,7 +83,7 @@ export default function ModernSkills() {
             variants={itemVariants}
             className="mx-auto max-w-2xl px-4 text-base text-gray-400 sm:px-0 sm:text-lg"
           >
-            Technologies and tools I use to bring ideas to life
+            Technologies I ship with — React Native, web, and full-stack
           </motion.p>
         </motion.div>
 

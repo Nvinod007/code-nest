@@ -60,3 +60,7 @@ test-output
 !.env.example
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
+
+# Portfolio agent context (local prompts — not for repo)
+apps/portfolio/.agent/
+apps/portfolio/public/docs/*

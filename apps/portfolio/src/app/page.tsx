@@ -45,7 +45,7 @@ export default function Home() {
                     Work Experience
                   </h2>
                   <p className="mx-auto max-w-2xl px-4 text-base text-gray-200 sm:px-0 sm:text-lg">
-                    My professional journey and key achievements
+                    Production apps at Carrier scale — metrics and live links
                   </p>
                 </div>
                 <Experience />
@@ -77,7 +77,7 @@ export default function Home() {
                   {personal.name}
                 </h3>
                 <p className="text-gray-300">
-                  {personal.tagline[0]}
+                  {personal.subtitle}
                 </p>
               </div>
 

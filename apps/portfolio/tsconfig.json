@@ -2,7 +2,6 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "preserve",
-    "types": ["react", "node", "three"],
     "noEmit": true,
     "emitDeclarationOnly": false,
     "esModuleInterop": true,
