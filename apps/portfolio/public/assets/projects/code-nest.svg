@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#0a0f1a" />
+  <rect
+    x="24"
+    y="24"
+    width="752"
+    height="402"
+    rx="12"
+    fill="#111827"
+    stroke="#1e293b"
+  />
+  <circle cx="52" cy="52" r="6" fill="#ef4444" />
+  <circle cx="72" cy="52" r="6" fill="#eab308" />
+  <circle cx="92" cy="52" r="6" fill="#22c55e" />
+  <text
+    x="300"
+    y="88"
+    fill="#f8fafc"
+    font-family="system-ui"
+    font-size="20"
+    font-weight="700"
+  >
+    CodeNest Monorepo
+  </text>
+  <rect
+    x="60"
+    y="110"
+    width="200"
+    height="120"
+    rx="8"
+    fill="#1e293b"
+    stroke="#3b82f6"
+  />
+  <text x="80" y="140" fill="#93c5fd" font-family="monospace" font-size="12">
+    apps/portfolio
+  </text>
+  <text x="80" y="162" fill="#64748b" font-family="monospace" font-size="12">
+    apps/exec-lens
+  </text>
+  <text x="80" y="184" fill="#64748b" font-family="monospace" font-size="12">
+    libs/ui
+  </text>
+  <rect
+    x="280"
+    y="110"
+    width="200"
+    height="120"
+    rx="8"
+    fill="#1e293b"
+    stroke="#8b5cf6"
+  />
+  <text x="300" y="140" fill="#c4b5fd" font-family="monospace" font-size="12">
+    libs/types
+  </text>
+  <text x="300" y="162" fill="#64748b" font-family="monospace" font-size="12">
+    libs/themes
+  </text>
+  <text x="300" y="184" fill="#64748b" font-family="monospace" font-size="12">
+    nx.json
+  </text>
+  <rect
+    x="500"
+    y="110"
+    width="240"
+    height="120"
+    rx="8"
+    fill="#1e293b"
+    stroke="#22c55e"
+  />
+  <text
+    x="520"
+    y="140"
+    fill="#86efac"
+    font-family="system-ui"
+    font-size="13"
+    font-weight="600"
+  >
+    Nx Cloud
+  </text>
+  <text x="520" y="168" fill="#64748b" font-family="system-ui" font-size="12">
+    Build cache � remote tasks
+  </text>
+  <rect
+    x="60"
+    y="260"
+    width="680"
+    height="120"
+    rx="8"
+    fill="#0f172a"
+    stroke="#334155"
+  />
+  <text
+    x="80"
+    y="295"
+    fill="#e2e8f0"
+    font-family="system-ui"
+    font-size="14"
+    font-weight="600"
+  >
+    Portfolio � Next.js � TypeScript
+  </text>
+  <text x="80" y="322" fill="#94a3b8" font-family="system-ui" font-size="12">
+    Shared UI, types, and themes across apps
+  </text>
+  <text x="280" y="430" fill="#64748b" font-family="system-ui" font-size="12">
+    CodeNest vinodkumar-flame.vercel.app
+  </text>
+</svg>

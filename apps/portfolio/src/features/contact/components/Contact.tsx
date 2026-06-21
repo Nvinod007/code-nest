@@ -28,7 +28,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="px-4 py-12 sm:py-20">
+    <section id="contact" className="scroll-mt-16 px-4 py-12 sm:py-20 lg:scroll-mt-8">
       <div className="mx-auto max-w-6xl">
         <motion.div
           ref={ref}

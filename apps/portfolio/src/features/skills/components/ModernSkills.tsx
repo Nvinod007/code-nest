@@ -64,7 +64,7 @@ export default function ModernSkills() {
   ];
 
   return (
-    <section id="skills" className="px-4 py-12 sm:py-20">
+    <section id="skills" className="scroll-mt-16 px-4 py-12 sm:py-20 lg:scroll-mt-8">
       <div className="mx-auto max-w-6xl">
         <motion.div
           ref={ref}

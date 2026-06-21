@@ -17,7 +17,7 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
       <body className="overflow-x-hidden bg-black text-white">
         {children}

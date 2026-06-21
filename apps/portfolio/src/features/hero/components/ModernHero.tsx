@@ -13,7 +13,8 @@ export default function ModernHero() {
 
   return (
     <motion.section
-      className="relative flex min-h-screen items-center justify-center px-4 sm:px-6 lg:px-8"
+      id="home"
+      className="relative flex min-h-screen scroll-mt-16 items-center justify-center px-4 sm:px-6 lg:scroll-mt-0 lg:px-8"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}

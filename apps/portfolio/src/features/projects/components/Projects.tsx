@@ -30,7 +30,7 @@ export default function Projects() {
   const archiveProjects = filteredProjects.filter(p => !p.featured);
 
   return (
-    <section id="projects" className="px-4 py-12 sm:py-20">
+    <section id="projects" className="scroll-mt-16 px-4 py-12 sm:py-20 lg:scroll-mt-8">
       <div className="mx-auto max-w-6xl">
         <div
           ref={ref}
@@ -217,6 +217,7 @@ function ProjectCard({
             alt={project.name}
             projectId={project.id}
             category={project.category}
+            variant={size === "small" ? "compact" : "default"}
             className="transition-transform duration-300 group-hover:scale-105"
           />
           <div className="pointer-events-none absolute inset-0 bg-black/20 transition-colors duration-300 group-hover:bg-black/10" />

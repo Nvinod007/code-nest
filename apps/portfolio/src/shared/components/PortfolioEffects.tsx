@@ -1,27 +1,33 @@
 "use client";
 
 import { useReducedMotion } from "@/shared/hooks/useReducedMotion";
+import { useEffectsMode } from "@/shared/hooks/useEffectsMode";
 import AnimatedBackground from "./AnimatedBackground";
 import ParticleField from "./ParticleField";
 import CodeMatrix from "./CodeMatrix";
-import CursorEffect from "./CursorEffect";
 import ScrollProgress from "./ScrollProgress";
 
 /**
- * Renders heavy visual effects only when the user has not requested reduced motion.
- * Keeps the portfolio fast on low-end devices and respects accessibility.
+ * Lite (default): gradient + mouse glow + scroll bar — best FPS.
+ * Full: adds particles + code matrix (localStorage portfolio-effects-mode=full).
  */
 export default function PortfolioEffects() {
   const reducedMotion = useReducedMotion();
+  const effectsMode = useEffectsMode();
 
   if (reducedMotion) return null;
+
+  const fullEffects = effectsMode === "full";
 
   return (
     <>
       <AnimatedBackground />
-      <ParticleField />
-      <CodeMatrix />
-      <CursorEffect />
+      {fullEffects && (
+        <>
+          <ParticleField />
+          <CodeMatrix />
+        </>
+      )}
       <ScrollProgress />
     </>
   );
