@@ -9,7 +9,7 @@
         "executor": "nx:run-commands",
         "options": {
           "commands": [
-            "npx prisma generate"
+            "npx prisma generate --schema src/prisma/schema.prisma"
           ],
           "cwd": "apps/live-sync-be"
         }
@@ -28,6 +28,9 @@
       },
       "build": {
         "executor": "@nx/esbuild:esbuild",
+        "dependsOn": [
+          "generate"
+        ],
         "outputs": [
           "{options.outputPath}"
         ],

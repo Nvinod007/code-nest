@@ -1,5 +1,5 @@
-const plugin = require("tailwindcss/plugin");
-import { CSSRuleObject } from "tailwindcss/types/config";
+import plugin from "tailwindcss/plugin";
+import type { CSSRuleObject } from "tailwindcss/types/config";
 
 export const tailwindPlugin = plugin(
   function ({
